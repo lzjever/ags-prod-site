@@ -11,50 +11,50 @@ import { cn } from '@/lib/cn';
 const featureCards = [
   {
     title: 'Chat',
-    description: '让团队在项目中立即开始工作，并把后续结果自然接回更完整的任务与治理链路。',
+    description: '让成员直接围绕同一个项目开始对话、整理问题，并把讨论自然接到后续任务上。',
     href: '/docs/capabilities/chat',
   },
   {
     title: 'Notebook',
-    description: '把复杂执行升级成长期任务，让每一次运行都能被回看、接手和复用。',
+    description: '把复杂工作交给可持续推进的任务，而不是停留在一次性调用或个人终端里。',
     href: '/docs/capabilities/notebook',
   },
   {
     title: 'Files',
-    description: '把输入资料、运行产物和本地目录接成同一层项目资产，而不是零散附件和临时目录。',
+    description: '让资料、过程产物和本地目录回到统一的项目资产层，方便继续协作和复用。',
     href: '/docs/capabilities/files',
   },
   {
     title: 'Agents',
-    description: '把原本依赖个人环境的执行能力，升级成团队都能调用、理解和管理的正式对象。',
+    description: '把原本依赖个人环境的执行能力接入系统，让团队都能调用、查看和管理。',
     href: '/docs/capabilities/agents',
   },
   {
     title: 'Governance',
-    description: '让资源控制、消耗观察和审计回看围绕同一条主线展开，而不是散落在不同后台里。',
+    description: '让资源限制、消耗观察和审计记录在真实使用过程中持续生效，而不是事后补看。',
     href: '/docs/capabilities/governance',
   },
   {
     title: '智能体运行专题',
-    description: '说明 AgentSmith 为什么不止是一个调用入口，而是一套面向团队落地的运行环境。',
+    description: '解释任务、文件、智能体和运行结果为什么会在同一套系统里持续衔接。',
     href: '/docs/agent-runtime/why-not-just-agent-ui',
   },
 ] as const;
 
 const audienceCards = [
   {
-    title: '看产品为什么成立',
-    description: '先理解 AgentSmith 解决什么企业问题，以及为什么它不是普通 AI 工具的叠加。',
+    title: '先看产品判断',
+    description: '先弄清 AgentSmith 解决什么问题、适合什么团队，以及为什么它值得长期采用。',
     href: '/docs/whitepaper',
   },
   {
-    title: '看产品如何被使用',
-    description: '直接浏览主要界面，了解项目中的对话、任务、文件、资源与审计如何持续协同。',
+    title: '再看日常使用',
+    description: '直接进入主要界面，看看团队会怎样发起对话、推进任务、沉淀资料和回看结果。',
     href: '/docs/interface-guides',
   },
   {
-    title: '看系统如何组织',
-    description: '查看工作区、项目、任务执行和治理回看如何在同一套系统中持续衔接。',
+    title: '再看系统结构',
+    description: '理解工作区、项目、任务执行、资源限制和审计记录为什么会被放进同一套产品里。',
     href: '/docs/architecture',
   },
 ] as const;
@@ -69,15 +69,15 @@ const trustSignals = [
 const comparisonPoints = [
   {
     label: '普通 AI 工具',
-    title: '能完成一次调用，却很难承接持续工作',
+    title: '能完成一次调用，却很难支撑团队连续工作',
     description:
-      '对话、任务、文件和治理通常分散在不同入口里，结果往往停留在个人环境，团队难以复用，也难以稳定运营。',
+      '对话、任务、文件和管理往往分散在不同入口里。结果留在个人环境，过程难以复盘，团队也很难把一次好结果变成可重复的方法。',
   },
   {
     label: 'AgentSmith',
-    title: '把一次次使用，组织成可以长期运行的项目主线',
+    title: '把一次次使用，组织成团队可以持续推进的项目工作',
     description:
-      '从对话、任务、文件到资源治理和审计回看，所有关键动作都围绕同一个项目上下文展开，让 AI 更容易真正进入业务流程。',
+      '从对话、任务、文件到资源限制、用量和审计，关键动作都围绕同一个项目展开。团队看到的不只是一个入口，而是一套能继续接力、沉淀和管理的工作结构。',
   },
 ] as const;
 
@@ -107,15 +107,15 @@ const heroVisuals = [
 const enterpriseChallenges = [
   {
     title: '使用场景碎片化',
-    description: '对话、任务、文件、端点与成员管理往往分散在不同工具和流程中。',
+    description: '对话、任务、文件、端点与成员管理往往分散在不同工具里，团队很难在同一处持续推进工作。',
   },
   {
     title: '治理链路不连续',
-    description: '资源限制、用量观察、异常排查和审计回看常常彼此脱节。',
+    description: '资源限制、用量观察、异常排查和审计回看常常彼此脱节，问题出现后也难以及时说明。',
   },
   {
     title: '智能体结果难沉淀',
-    description: '很多执行过程停留在终端或临时目录里，难以复用、协作和追溯。',
+    description: '很多执行过程停留在终端或临时目录里，后续成员很难接手，团队也难以复用已有结果。',
   },
 ] as const;
 
@@ -155,12 +155,12 @@ export default function HomePage() {
           <div className="space-y-5">
             <Eyebrow>Enterprise AI Control Plane</Eyebrow>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">
-              把企业级 AI 使用、治理与智能体执行收进
-              <span className="site-gradient-text">同一个控制平面。</span>
+              让企业把 AI 真正
+              <span className="site-gradient-text">放进持续工作的系统里。</span>
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-[rgb(var(--site-text-secondary))]">
-              AgentSmith 帮助企业把聊天、长期任务、文件资产、模型资源和治理回看组织进同一套项目工作流，
-              让 AI 不再停留在零散试用，而是进入真正可协作、可治理、可持续运行的业务系统。
+              AgentSmith 把对话、长期任务、文件资产、智能体执行、资源限制、用量观察和审计回看收进同一套项目系统，
+              让团队不再只是偶尔调用 AI，而是把它稳定地接进日常业务。
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -231,7 +231,7 @@ export default function HomePage() {
                 <span>Governed Execution</span>
               </div>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-[rgb(var(--site-text-secondary))]">
-                从项目总览到任务执行，再到文件资产与治理链路，AgentSmith 把原本分散的企业 AI 工作收拢成一条可协作、可回看、也能不断积累结果的项目主线。
+                从项目总览到任务执行，再到文件资产与资源回看，AgentSmith 让团队在同一套系统里继续推进工作，而不是在多个入口之间反复切换。
               </p>
             </div>
           </div>
@@ -244,9 +244,9 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             落地难点
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white">真正阻碍企业 AI 落地的，是流程分裂而不是模型能力。</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">很多企业并不是不会用 AI，而是很难把它稳定接进日常工作。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            企业真正遇到的难题，往往不是模型不够强，而是结果留不下来、流程接不起来、治理也很难说清楚。
+            真正让团队停下来的，往往不是模型效果，而是结果留不下来、流程接不起来、出了问题也很难说明白。
           </p>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
@@ -291,15 +291,15 @@ export default function HomePage() {
         <div className="grid gap-6 lg:grid-cols-2">
           <ValueStatement
             eyebrow="AgentSmith 的回答"
-            title="把使用、治理与执行放进同一项目工作流。"
-            summary="在 AgentSmith 里，团队成员不需要分别进入聊天工具、任务工具和治理后台工作，而是在同一个项目上下文中连续完成这些动作。产品因此不再只是“能用 AI”，而是能够让 AI 真正进入团队日常协作。"
-            detail="与此同时，端点、策略、用量、成员和审计始终沿着同一条治理主线展开，任务过程、执行产物和文件资产也会持续沉淀下来，让后续回看、复用和规模化推广拥有稳定基础。"
+            title="让使用、管理和执行发生在同一个项目里。"
+            summary="在 AgentSmith 里，团队成员不需要分别进入聊天工具、任务工具和管理后台工作，而是在同一个项目上下文中连续完成这些动作。这样一来，AI 不只是“可以调用”，而是能够真正接进日常协作。"
+            detail="端点、策略、用量、成员和审计会随着真实使用一起发生，任务过程、执行产物和文件资产也会继续留下来，方便后续回看、复用和扩大使用范围。"
           />
           <ValueStatement
             eyebrow="运行方式升级"
             title="把偏脚本化的 Agent 工作流升级成团队可用能力。"
             summary="许多智能体工作流之所以难以在团队里推广，不是因为能力不够，而是因为它们过于依赖个人命令行环境、临时目录和手工配置。AgentSmith 把这些原本偏脚本化的能力重新组织进统一任务空间，让执行真正成为产品能力，而不是少数人的经验。"
-            detail="文件、端点、凭据和智能体能力因此可以在项目内持续复用，执行过程和治理记录也会自然接回同一套资产与审计链路，让团队更容易从试点走向长期运行。"
+            detail="文件、端点、凭据和智能体能力因此可以在项目内持续复用，执行过程和治理记录也会一起保留下来，让团队更容易把试点结果变成长期可用的方法。"
           />
         </div>
       </section>
@@ -309,9 +309,9 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             为什么值得长期采用
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white">这不是为了把更多 AI 功能塞进后台，而是为了把团队工作真正组织起来。</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">它的价值不只在于更方便地调用 AI，而在于让团队工作真正积累下来。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            只有当使用入口、任务结构、文件资产和治理主线彼此对应起来，AI 才会从一次次尝试变成可以长期依赖的团队能力。
+            当使用入口、任务记录、文件资产和资源管理彼此接得上，AI 才会从一次次尝试变成团队可以长期依赖的能力。
           </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-3">
@@ -334,24 +334,24 @@ export default function HomePage() {
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              主线一
+              组织层
             </p>
             <h2 className="mt-4 text-2xl font-semibold text-white">企业级 AI 控制平面</h2>
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
-              以 workspace / project 组织 AI 使用，以 endpoint 为治理主线，把 Usage、Policy、Audit、
-              Members 与 Settings 统一进同一套项目结构，让企业不必在“先用起来”和“后面再治理”之间来回补洞。
+              以 workspace / project 组织 AI 使用，以 endpoint 组织资源边界，把 Usage、Policy、Audit、
+              Members 与 Settings 统一进同一套项目结构，让企业不必在“先用起来”和“后面再补管理”之间来回切换。
             </p>
-            <p className="mt-5 text-sm font-medium text-[rgb(var(--site-accent))]">更适合长期运营的团队结构</p>
+            <p className="mt-5 text-sm font-medium text-[rgb(var(--site-accent))]">适合持续运营的团队结构</p>
           </div>
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              主线二
+              执行层
             </p>
             <h2 className="mt-4 text-2xl font-semibold text-white">通用智能体运行环境</h2>
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
-              以 Notebook + Files + Agents 串联输入、执行、trace、artifacts 与运行工作目录，让智能体任务从个人技巧变成团队可以持续使用的正式能力。
+              以 Notebook + Files + Agents 串联输入、执行、trace、artifacts 与运行工作目录，让智能体任务从个人技巧变成团队可以持续调用的正式能力。
             </p>
-            <p className="mt-5 text-sm font-medium text-[rgb(var(--site-accent))]">更适合持续复用的执行结构</p>
+            <p className="mt-5 text-sm font-medium text-[rgb(var(--site-accent))]">适合持续复用的执行结构</p>
           </div>
         </div>
       </section>
@@ -361,9 +361,9 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             核心能力
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white">围绕项目级 AI 使用、治理与执行形成统一能力骨架。</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">把日常使用、任务执行和资源管理放进一套连续能力里。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            从低门槛的日常使用，到复杂任务执行，再到资源治理与审计回看，所有关键能力都围绕同一条产品主线展开。
+            从低门槛的日常使用，到复杂任务执行，再到资源治理与审计回看，关键能力会在同一个项目里持续接力，而不是分散在不同系统中。
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

@@ -1,6 +1,6 @@
 ---
 title: 用量与限额
-description: 展示 endpoint 调用量、限额卡片与趋势图的重要页面。
+description: 展示各个 Endpoint 的调用量、剩余额度和变化趋势，方便判断资源是不是快到限制。
 ---
 
 <Eyebrow>Govern Interface</Eyebrow>
@@ -11,7 +11,7 @@ description: 展示 endpoint 调用量、限额卡片与趋势图的重要页面
 
 <ScreenshotFrame
   preset="project-usage-guide"
-  caption="Usage 页面展示按 endpoint 切换的限额卡片、进度与趋势。"
+  caption="Usage 页面展示不同 Endpoint 的消耗、额度和趋势，方便查看哪个资源最近变化最大。"
 />
 
 <SiteSection title="这个页面的作用" description="Usage 页面负责让资源消耗变得持续可见。">
@@ -22,12 +22,12 @@ description: 展示 endpoint 调用量、限额卡片与趋势图的重要页面
 
 <SiteSection title="你通常会在这里看什么" description="按 Endpoint 查看消耗、额度和趋势，是这个页面最常见的使用方式。">
 
-管理员或相关成员通常会在这里按不同 Endpoint 查看当前消耗情况、剩余额度和趋势变化，并据此判断是否需要调整资源策略、预算安排或后续调用方式。对于持续使用 AI 的团队来说，这一页相当于资源健康状况的日常观察窗口。
+管理员或相关成员通常会在这里按不同 Endpoint 查看当前消耗情况、剩余额度和趋势变化，并据此判断是否需要调整资源策略、预算安排或后续调用方式。比如某个模型最近消耗是否突然升高，某项额度是不是快用完了，是否需要提前收紧限制或切换资源。
 
 </SiteSection>
 
-<SiteSection title="为什么它重要" description="如果看不到真实消耗，治理就很难进入长期运行。">
+<SiteSection title="为什么它重要" description="如果看不到真实消耗，很多管理动作就只能靠猜。">
 
-Usage 页面的价值，在于它让资源状态直接可见。资源策略决定了限制边界，Audit 解释了关键变化，而 Usage 则告诉团队这些资源在真实使用中到底发生了什么。只有把这三层接起来，团队才既能限制资源，也能理解资源。
+Usage 页面的价值，在于它让资源状态直接可见。资源策略决定了限制边界，Audit 解释了关键变化，而 Usage 则告诉团队这些资源在真实使用中到底发生了什么。只有把这三层接起来，团队才不会只知道“好像变多了”或“似乎被限制了”，而是能看清到底是哪一个 Endpoint 在消耗、变化从什么时候开始、后面应该去哪个页面继续查。
 
 </SiteSection>

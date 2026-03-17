@@ -1,6 +1,6 @@
 ---
 title: Endpoint 管理
-description: 展示 Endpoint 资源配置、状态与后续管理关系的核心页面。
+description: 展示 Endpoint 的资源配置和状态，方便确认哪些模型资源已经可用、后续会被哪些页面使用。
 ---
 
 <Eyebrow>Govern Interface</Eyebrow>
@@ -22,12 +22,12 @@ description: 展示 Endpoint 资源配置、状态与后续管理关系的核心
 
 <SiteSection title="你通常会在这里做什么" description="配置资源、确认状态和理解后续影响，是这个页面最常见的动作。">
 
-管理员通常会在这里创建新的模型资源、检查某个 Endpoint 当前是否可用，并理解它会被哪些页面和任务继续使用。因为 Endpoint 是项目资源，后续的限制、用量和审计也会围绕同一对象展开，所以这一页不仅仅是在“填一份模型配置”，而是在建立整条资源主线的起点。
+管理员通常会在这里创建新的模型资源、检查某个 Endpoint 当前是否可用，并理解它会被哪些页面和任务继续使用。比如，某个模型是不是已经可供 Chat 使用，Notebook 任务会不会调用它，后面该给谁开放访问权限，消耗和异常又会记录到哪里。也就是说，这一页不只是“填一份模型配置”，而是在建立后续所有资源使用的起点。
 
 </SiteSection>
 
 <SiteSection title="为什么它重要" description="模型资源只有先成为正式对象，后续治理和复用才会稳定。">
 
-如果模型配置散落在不同页面里，团队很难保证使用、限制和回看保持一致。Endpoint 页面的价值，就在于把模型资源先固定成项目对象，再让 Chat、Notebook、Agents、Resource Policy、Usage 和 Audit 围绕它继续工作。这样一来，资源定义、资源使用和资源治理才能真正连起来。
+如果模型配置散落在不同页面里，团队很难保证使用、限制和回看保持一致。Endpoint 页面的价值，就在于把模型资源先固定成项目对象，再让 Chat、Notebook、Agents、Resource Policy、Usage 和 Audit 围绕它继续工作。这样一来，团队就能知道某个模型是谁在用、限制是否生效、出了问题后要查哪条记录，而不是在多个页面之间来回猜测。
 
 </SiteSection>

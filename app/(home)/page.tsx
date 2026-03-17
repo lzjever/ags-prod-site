@@ -136,8 +136,8 @@ export default function HomePage() {
               <span className="site-gradient-text">同一个控制平面。</span>
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-[rgb(var(--site-text-secondary))]">
-              AgentSmith 让团队在统一项目上下文中使用 AI、运行智能体、管理资源与回看审计，把
-              Chat、Notebook、Files、Agents 与治理能力连接为同一套工作系统。
+              AgentSmith 让团队在统一项目上下文中使用 AI、运行智能体、管理资源并回看审计，
+              把 Chat、Notebook、Files、Agents 与治理能力收拢成一套真正可以长期运作的工作系统。
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -198,7 +198,7 @@ export default function HomePage() {
                 <span>Governed Execution</span>
               </div>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-[rgb(var(--site-text-secondary))]">
-                从项目总览到任务执行，再到文件资产与治理链路，AgentSmith 把原本分散的企业 AI 工作收拢为连续、可回看、可治理的项目流程。
+                从项目总览到任务执行，再到文件资产与治理链路，AgentSmith 把原本分散的企业 AI 工作收拢成一条连续、可回看、也可持续复用的项目流程。
               </p>
             </div>
           </div>

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "fumadocs-mdx && next typegen && tsc --noEmit"
+    "typecheck": "fumadocs-mdx && next typegen && npx tsc --noEmit --incremental false"
   },
   "dependencies": {
     "fumadocs-core": "^16.6.17",

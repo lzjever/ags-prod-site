@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { FocusedScreenshot } from '@/components/site/focused-screenshot';
 import { referencePages } from '@/lib/reference-pages';
 
 export function ReferenceGrid() {
@@ -8,9 +9,19 @@ export function ReferenceGrid() {
         <Link
           key={page.slug}
           href={page.href}
-          className="site-surface overflow-hidden rounded-[var(--site-radius-lg)] transition-transform duration-200 hover:-translate-y-1"
+          className="site-surface overflow-hidden rounded-[var(--site-radius-lg)] transition-transform duration-300 hover:-translate-y-1.5"
         >
-          <img src={page.image} alt={page.title} className="aspect-[16/10] w-full object-cover" />
+          <FocusedScreenshot
+            src={page.image}
+            alt={page.title}
+            label={page.label}
+            note={page.note}
+            objectPosition={page.objectPosition}
+            scale={page.scale}
+            viewportClassName={page.viewportClassName}
+            className="rounded-b-none"
+            glow={false}
+          />
           <div className="space-y-2 p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--site-accent))]">
               {page.group}

@@ -1,9 +1,11 @@
 import Link from 'next/link';
-import { ArrowRight, Bot, Boxes, FileStack, ShieldCheck, Waypoints } from 'lucide-react';
+import { ArrowRight, Bot, FileStack, ShieldCheck, Waypoints } from 'lucide-react';
 import { FeatureCard } from '@/components/site/feature-card';
 import { AudienceCard } from '@/components/site/audience-card';
 import { ReferenceGrid } from '@/components/site/reference-grid';
 import { Eyebrow } from '@/components/site/eyebrow';
+import { FocusedScreenshot } from '@/components/site/focused-screenshot';
+import { cn } from '@/lib/cn';
 
 const featureCards = [
   {
@@ -53,6 +55,49 @@ const audienceCards = [
     title: '给设计与研发',
     description: '从架构、能力、任务流和状态治理角度理解全站内容。',
     href: '/docs/architecture',
+  },
+] as const;
+
+const heroVisuals = [
+  {
+    title: '项目入口',
+    note: '以项目为主语，把 AI 使用与治理界面收拢到同一入口。',
+    src: '/api/reference-assets/project-overview.png',
+    objectPosition: '52% 22%',
+    scale: 1.24,
+    className: 'lg:left-0 lg:top-0 lg:w-[68%]',
+    viewportClassName: 'aspect-[1.08/1]',
+    floatClassName: 'site-float-slow',
+  },
+  {
+    title: 'Notebook 执行',
+    note: '任务消息、状态与产物同屏，更像真正可回看的执行对象。',
+    src: '/api/reference-assets/project-notebook-task-detail.png',
+    objectPosition: '54% 29%',
+    scale: 1.18,
+    className: 'lg:right-0 lg:top-16 lg:w-[54%]',
+    viewportClassName: 'aspect-[0.88/1]',
+    floatClassName: 'site-float-delay',
+  },
+  {
+    title: 'Chat 会话',
+    note: '保留线程列表的同时，把主回答区拉到视觉核心。',
+    src: '/api/reference-assets/project-chat-session.png',
+    objectPosition: '52% 28%',
+    scale: 1.15,
+    className: 'lg:bottom-10 lg:left-6 lg:w-[60%]',
+    viewportClassName: 'aspect-[1.2/1]',
+    floatClassName: 'site-float-reverse',
+  },
+  {
+    title: 'Files 资产层',
+    note: '局部强调本地挂载说明，突出文件资产化与平台协同。',
+    src: '/api/reference-assets/project-files.png',
+    objectPosition: '50% 36%',
+    scale: 1.15,
+    className: 'lg:bottom-0 lg:right-8 lg:w-[42%]',
+    viewportClassName: 'aspect-[0.96/1]',
+    floatClassName: 'site-float-soft',
   },
 ] as const;
 
@@ -111,28 +156,45 @@ export default function HomePage() {
           </div>
         </div>
         <div className="relative">
-          <div className="site-surface relative rounded-[28px] p-4">
-            <div className="grid gap-4 md:grid-cols-2">
-              <img
-                src="/api/reference-assets/project-overview.png"
-                alt="Project overview"
-                className="rounded-[20px] border border-[rgb(var(--site-border-subtle))]"
+          <div className="grid gap-4 lg:hidden">
+            {heroVisuals.map((visual) => (
+              <FocusedScreenshot
+                key={visual.title}
+                src={visual.src}
+                alt={visual.title}
+                label={visual.title}
+                note={visual.note}
+                objectPosition={visual.objectPosition}
+                scale={visual.scale}
+                viewportClassName={visual.viewportClassName}
               />
-              <img
-                src="/api/reference-assets/project-chat-session.png"
-                alt="Project chat"
-                className="translate-y-4 rounded-[20px] border border-[rgb(var(--site-border-subtle))]"
-              />
-              <img
-                src="/api/reference-assets/project-notebook-task-detail.png"
-                alt="Notebook task detail"
-                className="-translate-y-2 rounded-[20px] border border-[rgb(var(--site-border-subtle))]"
-              />
-              <img
-                src="/api/reference-assets/project-files.png"
-                alt="Files"
-                className="rounded-[20px] border border-[rgb(var(--site-border-subtle))]"
-              />
+            ))}
+          </div>
+          <div className="site-surface relative hidden h-[640px] overflow-hidden rounded-[32px] p-6 lg:block">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgb(var(--site-accent)/0.18),transparent_24%),radial-gradient(circle_at_80%_18%,rgb(255_255_255/0.08),transparent_18%),linear-gradient(180deg,rgb(255_255_255/0.02),transparent_32%,transparent_80%,rgb(7_8_12/0.35))]" />
+            {heroVisuals.map((visual) => (
+              <div key={visual.title} className={cn('absolute', visual.className, visual.floatClassName)}>
+                <FocusedScreenshot
+                  src={visual.src}
+                  alt={visual.title}
+                  label={visual.title}
+                  note={visual.note}
+                  objectPosition={visual.objectPosition}
+                  scale={visual.scale}
+                  viewportClassName={visual.viewportClassName}
+                  className="shadow-[0_22px_60px_rgba(0,0,0,0.38)]"
+                />
+              </div>
+            ))}
+            <div className="absolute bottom-6 left-6 right-6 rounded-[24px] border border-[rgb(var(--site-border-strong)/0.4)] bg-[linear-gradient(135deg,rgb(var(--site-bg-base)/0.9),rgb(var(--site-bg-panel)/0.82))] px-5 py-4 backdrop-blur">
+              <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--site-accent))]">
+                <span>Project-Scoped AI</span>
+                <span className="h-1 w-1 rounded-full bg-[rgb(var(--site-accent))]" />
+                <span>Evidence-First Storytelling</span>
+              </div>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-[rgb(var(--site-text-secondary))]">
+                首页主视觉现在直接使用真实界面裁切后的关键区域，优先强调项目入口、任务执行、对话体验与文件资产层，而不是把整张后台截图缩成缩略图。
+              </p>
             </div>
           </div>
           <div className="pointer-events-none absolute -inset-6 -z-10 rounded-[36px] bg-[radial-gradient(circle_at_center,rgb(var(--site-accent)/0.18),transparent_70%)] blur-3xl" />

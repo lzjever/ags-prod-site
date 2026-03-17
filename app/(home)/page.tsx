@@ -59,6 +59,21 @@ const audienceCards = [
   },
 ] as const;
 
+const comparisonPoints = [
+  {
+    label: '普通 AI 工具',
+    title: '能完成一次调用，却很难承接持续工作',
+    description:
+      '对话、任务、文件和治理通常分散在不同入口里，结果往往停留在个人环境，团队难以复用，也难以稳定运营。',
+  },
+  {
+    label: 'AgentSmith',
+    title: '把一次次使用，组织成可以长期运行的项目主线',
+    description:
+      '从对话、任务、文件到资源治理和审计回看，所有关键动作都围绕同一个项目上下文展开，让 AI 更容易真正进入业务流程。',
+  },
+] as const;
+
 const heroVisuals = [
   {
     preset: 'project-overview-home',
@@ -146,7 +161,7 @@ export default function HomePage() {
               href="/docs/whitepaper"
               className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--site-accent))] px-5 py-3 text-sm font-semibold text-slate-950 transition-transform duration-200 hover:-translate-y-0.5"
             >
-              理解产品价值
+              先看为什么值得采用
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -230,6 +245,32 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12">
+        <div className="mb-8 max-w-3xl space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
+            为什么不是普通 AI 工具
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">差别不在于多一个模型入口，而在于能不能把结果接进团队长期工作。</h2>
+          <p className="text-[rgb(var(--site-text-secondary))]">
+            AgentSmith 试图解决的，不是一次调用是否顺滑，而是一次调用之后，团队还能不能继续协作、继续复用、继续治理。
+          </p>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-2">
+          {comparisonPoints.map((item) => (
+            <div
+              key={item.label}
+              className="site-surface rounded-[var(--site-radius-xl)] p-7"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[rgb(var(--site-accent))]">
+                {item.label}
+              </p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">{item.title}</h3>
+              <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-6 lg:grid-cols-2">
           <ValueStatement
             eyebrow="AgentSmith 的回答"
@@ -278,7 +319,7 @@ export default function HomePage() {
             <h2 className="mt-4 text-2xl font-semibold text-white">企业级 AI 控制平面</h2>
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
               以 workspace / project 组织 AI 使用，以 endpoint 为治理主线，把 Usage、Policy、Audit、
-              Members 与 Settings 统一进同一套项目结构。
+              Members 与 Settings 统一进同一套项目结构，让企业不必在“先用起来”和“后面再治理”之间来回补洞。
             </p>
           </div>
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
@@ -287,7 +328,7 @@ export default function HomePage() {
             </p>
             <h2 className="mt-4 text-2xl font-semibold text-white">通用智能体运行环境</h2>
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
-              以 Notebook + Files + Agents 串联输入、执行、trace、artifacts 与运行工作目录，让智能体任务形成连续链路。
+              以 Notebook + Files + Agents 串联输入、执行、trace、artifacts 与运行工作目录，让智能体任务从个人技巧变成团队可以持续使用的正式能力。
             </p>
           </div>
         </div>
@@ -372,6 +413,21 @@ export default function HomePage() {
           {audienceCards.map((card) => (
             <AudienceCard key={card.title} {...card} />
           ))}
+        </div>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link
+            href="/docs/agent-runtime/why-not-just-agent-ui"
+            className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--site-accent))] px-5 py-3 text-sm font-semibold text-slate-950 transition-transform duration-200 hover:-translate-y-0.5"
+          >
+            看核心差异化
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/docs/architecture"
+            className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--site-border))] bg-[rgb(var(--site-bg-surface-high)/0.5)] px-5 py-3 text-sm font-semibold text-white hover:border-[rgb(var(--site-accent)/0.4)]"
+          >
+            看整体架构
+          </Link>
         </div>
       </section>
     </main>

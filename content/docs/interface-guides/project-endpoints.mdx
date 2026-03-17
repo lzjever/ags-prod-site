@@ -1,6 +1,6 @@
 ---
 title: Endpoint 管理
-description: 展示 endpoint 作为统一治理主对象的核心管理界面。
+description: 展示 Endpoint 资源配置、状态与后续管理关系的核心页面。
 ---
 
 <Eyebrow>Govern Interface</Eyebrow>
@@ -11,31 +11,24 @@ description: 展示 endpoint 作为统一治理主对象的核心管理界面。
 
 <ScreenshotFrame
   preset="project-endpoints-guide"
-  caption="Endpoint 管理页是治理主线的起点，用于配置项目可用模型资源。"
+  caption="Endpoint 管理页用于配置项目可用模型资源，并查看其状态与基本信息。"
 />
 
-<TalkTrack
-  audience="Talk Track"
-  title="这张界面最适合讲什么"
-  talk="当你需要解释 AgentSmith 为什么不是每个页面各管一摊时，Endpoint 页面就是最好的例子。它把模型资源定义成统一对象，让后续策略、用量和审计都围绕同一个中心继续展开。"
-  proof="它证明治理并不是额外附加层，而是从资源对象一开始就被纳入产品主线。"
-/>
+<SiteSection title="界面概览" description="Endpoint 页面用于配置和管理项目可用的模型资源。">
 
-<SiteSection title="你会在这里做什么" description="这里用于统一管理项目可用模型资源与相关配置。">
+Endpoint 页面用于集中管理项目可用的模型资源。模型资源、供应商、能力边界和运行状态都会在这里被明确下来，因此后续无论是聊天、任务执行还是智能体调用，都可以基于同一组资源继续工作。
 
-Endpoint 页面是整个治理主线的起点。模型资源、供应商、能力边界和运行状态都在这里被明确下来，因此后续无论是聊天、任务执行还是智能体调用，都能够指向同一组正式资源。对企业团队来说，这种统一入口非常重要，因为它避免了接入能力散落在不同页面和不同流程里。
-
-一旦资源对象被集中管理，策略、用量和审计也就有了共同的参照系，整套治理表达会自然清晰很多。
+资源对象被集中管理之后，策略、用量和审计也就有了共同参照，后续管理会更加清晰。
 
 </SiteSection>
 
-<SiteSection title="关键看点" description="Endpoint 页最适合用来讲清楚 AgentSmith 的治理主线为什么围绕资源对象展开。">
+<SiteSection title="主要价值" description="Endpoint 把模型资源集中到统一对象中，便于后续管理和使用。">
 
-很多平台的问题不在于不能接入模型，而在于接入之后缺少统一的管理中心。AgentSmith 在这里给出的答案很直接：把资源对象先定义清楚，再围绕它展开后续的限制、观察和追溯。这样一来，治理就不再像一堆零散规则，而更像一套有主线、有中心对象的产品结构。
+这里的重点在于把模型资源定义成清晰可管理的对象。Endpoint 建立之后，后续的限制、观察和追溯都可以围绕同一资源展开，团队在管理模型资源时也会更加稳定。
 
 </SiteSection>
 
-<SiteSection title="关联模块" description="Endpoint 是治理主线的起点，也是使用面的公共底座。">
+<SiteSection title="相关功能" description="Endpoint 与资源策略、用量、审计以及执行能力共同构成项目资源体系。">
 
 Chat、Notebook 和 Agents 共用这里定义好的模型资源，Policy、Usage 和 Audit 也围绕这些资源持续展开。再加上凭据绑定、创建动作和后续治理页面，Endpoint 实际上把使用面和治理面牢牢接在了一起。
 

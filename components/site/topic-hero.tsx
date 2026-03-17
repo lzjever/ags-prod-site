@@ -18,7 +18,7 @@ export function TopicHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="my-8 overflow-hidden rounded-[28px] border border-[rgb(var(--site-border)/0.72)] bg-[linear-gradient(180deg,rgb(var(--site-bg-surface)/0.92),rgb(var(--site-bg-panel)/0.88))] p-5 shadow-[0_18px_54px_rgba(0,0,0,0.28)] md:p-8">
+    <section className="site-reveal-up site-topic-shell my-8 overflow-hidden rounded-[28px] border border-[rgb(var(--site-border)/0.72)] bg-[linear-gradient(180deg,rgb(var(--site-bg-surface)/0.92),rgb(var(--site-bg-panel)/0.88))] p-5 shadow-[0_18px_54px_rgba(0,0,0,0.28)] md:p-8">
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="space-y-5">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
@@ -45,7 +45,11 @@ export function TopicHero({
             <FocusedScreenshot
               key={preset}
               preset={preset}
-              className={cn(index === 1 ? 'md:translate-y-6' : '', 'shadow-[0_20px_48px_rgba(0,0,0,0.26)]')}
+              className={cn(
+                index === 1 ? 'md:translate-y-6' : '',
+                index === 0 ? 'site-float-soft' : 'site-float-delay',
+                'shadow-[0_20px_48px_rgba(0,0,0,0.26)]',
+              )}
             />
           ))}
         </div>

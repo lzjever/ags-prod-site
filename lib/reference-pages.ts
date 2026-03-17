@@ -47,4 +47,12 @@ export const referencePages = [
     preset: 'project-audit-card',
     summary: '用于查看配置变化、异常事件与追溯信息的审计界面。',
   },
+  {
+    slug: 'project-agents',
+    title: '智能体列表',
+    group: '智能体运行',
+    href: '/docs/interface-guides/project-agents',
+    preset: 'project-agents-topic',
+    summary: '查看项目可用智能体、运行模式与交互方式的关键界面。',
+  },
 ] as const;

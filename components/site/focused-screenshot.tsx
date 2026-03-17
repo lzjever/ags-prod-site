@@ -13,6 +13,7 @@ type FocusedScreenshotProps = {
   label?: string;
   note?: string;
   glow?: boolean;
+  mobileNoteBelow?: boolean;
 };
 
 export function FocusedScreenshot({
@@ -27,6 +28,7 @@ export function FocusedScreenshot({
   label,
   note,
   glow = true,
+  mobileNoteBelow = true,
 }: FocusedScreenshotProps) {
   const presetData = preset ? getScreenshotPreset(preset) : null;
   const resolvedSrc = src ?? presetData?.src;
@@ -60,7 +62,12 @@ export function FocusedScreenshot({
           </div>
         ) : null}
         {resolvedNote ? (
-          <div className="absolute bottom-5 right-5 z-10 max-w-[70%] rounded-2xl border border-[rgb(var(--site-border-subtle)/0.85)] bg-[rgb(var(--site-bg-base)/0.82)] px-3 py-2 text-xs leading-5 text-[rgb(var(--site-text-secondary))] shadow-[0_12px_24px_rgba(0,0,0,0.28)] backdrop-blur">
+          <div
+            className={cn(
+              'absolute bottom-5 right-5 z-10 max-w-[70%] rounded-2xl border border-[rgb(var(--site-border-subtle)/0.85)] bg-[rgb(var(--site-bg-base)/0.82)] px-3 py-2 text-xs leading-5 text-[rgb(var(--site-text-secondary))] shadow-[0_12px_24px_rgba(0,0,0,0.28)] backdrop-blur',
+              mobileNoteBelow ? 'hidden md:block' : '',
+            )}
+          >
             {resolvedNote}
           </div>
         ) : null}
@@ -79,6 +86,11 @@ export function FocusedScreenshot({
           />
         </div>
       </div>
+      {resolvedNote && mobileNoteBelow ? (
+        <div className="mt-3 rounded-2xl border border-[rgb(var(--site-border-subtle)/0.72)] bg-[rgb(var(--site-bg-base)/0.56)] px-3 py-2 text-xs leading-5 text-[rgb(var(--site-text-secondary))] md:hidden">
+          {resolvedNote}
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -235,22 +235,28 @@ export default function HomePage() {
               AgentSmith 的回答
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">把使用、治理与执行放进同一项目工作流。</h2>
-            <ul className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
-              <li>团队成员在统一项目上下文中使用 Chat、Notebook、Files 与 Agents。</li>
-              <li>端点、策略、用量、成员与审计通过同一治理主线连接起来。</li>
-              <li>任务过程、产物与文件资产持续沉淀，方便回看、复用与协作。</li>
-            </ul>
+            <div className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
+              <p>
+                在 AgentSmith 里，团队成员不是分别进入聊天工具、任务工具和治理后台工作，而是在同一个项目上下文中连续完成这些动作。这样一来，使用体验会更自然，团队协作也更容易建立在同一套业务边界上。
+              </p>
+              <p>
+                与此同时，端点、策略、用量、成员和审计始终沿着同一条治理主线展开，任务过程、执行产物和文件资产也会持续沉淀下来，让后续回看、复用和协作都有稳定基础。
+              </p>
+            </div>
           </div>
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
               运行方式升级
             </p>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">把偏脚本化的 Agent 工作流升级成团队可用能力。</h2>
-            <ul className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
-              <li>任务不再依赖临时命令行上下文，而是进入统一任务空间。</li>
-              <li>文件、端点、凭据与智能体能力能够在项目内持续复用。</li>
-              <li>执行过程与治理记录自然接上同一套项目资产与审计能力。</li>
-            </ul>
+            <div className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
+              <p>
+                许多智能体工作流之所以难以在团队里推广，不是因为能力不够，而是因为它们过于依赖个人命令行环境、临时目录和手工配置。AgentSmith 把这些原本偏脚本化的能力重新组织进统一任务空间，让执行真正成为产品能力的一部分。
+              </p>
+              <p>
+                文件、端点、凭据和智能体能力因此可以在项目内持续复用，执行过程和治理记录也会自然接回同一套资产与审计链路，让团队更容易把 AI 工作纳入长期流程。
+              </p>
+            </div>
           </div>
         </div>
       </section>

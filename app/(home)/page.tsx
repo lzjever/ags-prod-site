@@ -11,27 +11,27 @@ import { cn } from '@/lib/cn';
 const featureCards = [
   {
     title: 'Chat',
-    description: '让团队先用起来，再在同一项目语境里把结果接回更完整的工作流。',
+    description: '让团队在项目中立即开始工作，并把后续结果自然接回更完整的任务与治理链路。',
     href: '/docs/capabilities/chat',
   },
   {
     title: 'Notebook',
-    description: '把复杂执行从临时过程变成长期任务，让每一次运行都能被回看和复用。',
+    description: '把复杂执行升级成长期任务，让每一次运行都能被回看、接手和复用。',
     href: '/docs/capabilities/notebook',
   },
   {
     title: 'Files',
-    description: '把输入资料、运行产物和本地目录接成同一层项目资产，而不是零散附件。',
+    description: '把输入资料、运行产物和本地目录接成同一层项目资产，而不是零散附件和临时目录。',
     href: '/docs/capabilities/files',
   },
   {
     title: 'Agents',
-    description: '把原本依赖个人环境的执行能力，升级成团队都能调用和管理的正式对象。',
+    description: '把原本依赖个人环境的执行能力，升级成团队都能调用、理解和管理的正式对象。',
     href: '/docs/capabilities/agents',
   },
   {
     title: 'Governance',
-    description: '让资源控制、消耗观察和审计回看围绕同一条主线展开，不再各说各话。',
+    description: '让资源控制、消耗观察和审计回看围绕同一条主线展开，而不是散落在不同后台里。',
     href: '/docs/capabilities/governance',
   },
   {
@@ -43,17 +43,17 @@ const featureCards = [
 
 const audienceCards = [
   {
-    title: '先看产品摘要',
-    description: '了解这套产品如何帮助团队把 AI 使用、治理与智能体执行放进同一套工作结构。',
+    title: '看产品为什么成立',
+    description: '先理解 AgentSmith 解决什么企业问题，以及为什么它不是普通 AI 工具的叠加。',
     href: '/docs/whitepaper',
   },
   {
-    title: '先看关键界面',
-    description: '直接浏览主要界面，了解项目中的对话、任务、文件、资源与审计如何协同工作。',
+    title: '看产品如何被使用',
+    description: '直接浏览主要界面，了解项目中的对话、任务、文件、资源与审计如何持续协同。',
     href: '/docs/interface-guides',
   },
   {
-    title: '先看系统结构',
+    title: '看系统如何组织',
     description: '查看工作区、项目、任务执行和治理回看如何在同一套系统中持续衔接。',
     href: '/docs/architecture',
   },
@@ -155,12 +155,12 @@ export default function HomePage() {
           <div className="space-y-5">
             <Eyebrow>Enterprise AI Control Plane</Eyebrow>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">
-              把企业级 AI 使用、治理与智能体运行收进
+              把企业级 AI 使用、治理与智能体执行收进
               <span className="site-gradient-text">同一个控制平面。</span>
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-[rgb(var(--site-text-secondary))]">
-              AgentSmith 帮助企业把聊天、任务执行、文件资产、模型资源和治理回看组织进同一套项目工作流，
-              让 AI 不再停留在零散试用，而是进入真正可协作、可治理、可持续扩展的业务系统。
+              AgentSmith 帮助企业把聊天、长期任务、文件资产、模型资源和治理回看组织进同一套项目工作流，
+              让 AI 不再停留在零散试用，而是进入真正可协作、可治理、可持续运行的业务系统。
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -168,7 +168,7 @@ export default function HomePage() {
               href="/docs/whitepaper"
               className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--site-accent))] px-5 py-3 text-sm font-semibold text-slate-950 transition-transform duration-200 hover:-translate-y-0.5"
             >
-              先看为什么值得采用
+              看为什么值得采用
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
@@ -268,7 +268,7 @@ export default function HomePage() {
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-white">差别不在于多一个模型入口，而在于能不能把结果接进团队长期工作。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            AgentSmith 试图解决的，不是一次调用是否顺滑，而是一次调用之后，团队还能不能继续协作、继续复用、继续治理。
+            AgentSmith 试图解决的，不是一次调用是否顺滑，而是一次调用之后，团队还能不能继续协作、继续复用、继续治理，并把结果真正留在项目里。
           </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-2">
@@ -293,7 +293,7 @@ export default function HomePage() {
             eyebrow="AgentSmith 的回答"
             title="把使用、治理与执行放进同一项目工作流。"
             summary="在 AgentSmith 里，团队成员不需要分别进入聊天工具、任务工具和治理后台工作，而是在同一个项目上下文中连续完成这些动作。产品因此不再只是“能用 AI”，而是能够让 AI 真正进入团队日常协作。"
-            detail="与此同时，端点、策略、用量、成员和审计始终沿着同一条治理主线展开，任务过程、执行产物和文件资产也会持续沉淀下来，让后续回看、复用和规模化推广都有稳定基础。"
+            detail="与此同时，端点、策略、用量、成员和审计始终沿着同一条治理主线展开，任务过程、执行产物和文件资产也会持续沉淀下来，让后续回看、复用和规模化推广拥有稳定基础。"
           />
           <ValueStatement
             eyebrow="运行方式升级"
@@ -310,6 +310,9 @@ export default function HomePage() {
             为什么值得长期采用
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-white">这不是为了把更多 AI 功能塞进后台，而是为了把团队工作真正组织起来。</h2>
+          <p className="text-[rgb(var(--site-text-secondary))]">
+            只有当使用入口、任务结构、文件资产和治理主线彼此对应起来，AI 才会从一次次尝试变成可以长期依赖的团队能力。
+          </p>
         </div>
         <div className="grid gap-6 lg:grid-cols-3">
           <ValueStatement
@@ -412,7 +415,7 @@ export default function HomePage() {
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-white">从真实产品界面理解关键能力与工作方式。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            关键能力不需要停留在概念层面。你可以直接从真实产品界面看到它们如何被使用、如何产生结果，以及如何进入治理链路。
+            关键能力不需要停留在概念层面。你可以直接从真实产品界面看到它们如何被使用、如何产生结果，以及如何进入后续治理链路。
           </p>
         </div>
         <ReferenceGrid />
@@ -425,7 +428,7 @@ export default function HomePage() {
           </p>
           <h2 className="text-3xl font-semibold tracking-tight text-white">从你的关注点继续了解 AgentSmith。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            无论你更关注产品价值、落地表达，还是系统结构，都可以从对应入口继续往下看。
+            无论你更关注产品价值、实际使用方式，还是系统结构，都可以从对应入口继续往下看。
           </p>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">

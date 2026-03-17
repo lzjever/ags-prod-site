@@ -14,10 +14,7 @@ Resource Policy 负责围绕 endpoint 资源定义访问控制与 rate / spendin
   description="当前策略围绕 project default、resource override 与 subject override 组织。"
 >
 
-1. `Project Defaults`
-2. `Resource Override`
-3. `Subject Override`
-4. 共同解析为 effective policy
+当前策略模型围绕 `Project Defaults`、`Resource Override` 和 `Subject Override` 组织，并最终共同解析为 effective policy。这样的设计让默认规则、资源级特例和面向主体的差异化约束可以同时存在，也让治理结果更容易被系统化解释。
 
 </SiteSection>
 
@@ -26,16 +23,12 @@ Resource Policy 负责围绕 endpoint 资源定义访问控制与 rate / spendin
   description="管理员不仅要看到最终结果，也要能理解为什么这条有效策略会这样生效。"
 >
 
-1. 解释多层覆盖优先级。
-2. 让策略配置真正能在使用路径被执行。
-3. 让治理结果可以在 Audit 和 Usage 中被验证。
+这部分能力的重要性，在于管理员不仅要看到最终结果，还要理解为什么它会这样生效。多层覆盖的优先级需要被解释清楚，策略配置需要在真实使用路径中被执行，治理结果也需要在 Audit 和 Usage 里被验证。只有这样，策略才不是纸面规则，而是可信的产品能力。
 
 </SiteSection>
 
 <SiteSection title="它如何影响实际使用" description="Resource Policy 不是纸面规则，而是直接影响成员在项目中的资源使用方式。">
 
-1. 决定成员是否可以访问某个端点。
-2. 决定请求频率、费用和默认权限边界。
-3. 决定 Audit 和 Usage 中看到的治理结果是否可解释。
+Resource Policy 会直接决定成员能否访问某个端点、请求频率和费用边界如何设置，也会影响 Audit 和 Usage 中看到的治理结果是否足够可解释。换句话说，它不是离业务很远的一层，而是项目资源使用方式最直接的塑形者。
 
 </SiteSection>

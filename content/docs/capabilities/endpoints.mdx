@@ -14,17 +14,12 @@ Endpoints 是当前项目级治理主线的核心资源对象。
   description="后续 Chat、Notebook 与 API 路径都围绕同一套 endpoint 资源工作。"
 >
 
-1. 统一管理项目可用模型资源。
-2. 让能力边界、资源来源与成本边界集中配置。
-3. 为 Usage、Policy、Audit 提供共同主对象。
+Endpoints 负责统一管理项目可用的模型资源，把能力边界、资源来源和成本边界集中配置起来。这样一来，后续的 Chat、Notebook 与 API 路径都能围绕同一套资源工作，而 Usage、Policy、Audit 也就有了共同的主对象。
 
 </SiteSection>
 
 <SiteSection title="关键特征" description="Endpoint 是治理主线中的核心资源对象，而不只是普通配置列表。">
 
-1. endpoint 列表与 CRUD。
-2. capability-first 的 provider / model 选择。
-3. import / export。
-4. Chat 仅展示 completion-capable endpoint。
+Endpoint 不是普通配置列表，而是治理主线里的核心资源对象。它既承接资源的创建、维护和导入导出，也通过 capability-first 的 provider / model 选择方式把接入过程组织得更清晰，同时让 Chat 只暴露真正可用于对话的资源能力。这样的设计，会让整个产品的资源表达更加统一。
 
 </SiteSection>

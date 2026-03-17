@@ -1,0 +1,30 @@
+---
+title: 资料来源说明
+description: 说明站点内容来自哪些一等事实源，以及如何保持与主项目同步。
+---
+
+<Eyebrow>Sources</Eyebrow>
+
+# 资料来源说明
+
+当前站点的一等事实来源固定为：
+
+1. `references/prd-v1/`
+2. `references/product-docs/latest/`
+3. `../agentsmith` 仓库中的代码、测试、合同与开发文档
+
+<SiteSection title="同步方式" description="在更新内容和截图前，优先同步 references。">
+
+```bash
+./scripts/sync-reference-sources.sh
+```
+
+</SiteSection>
+
+<SiteSection title="为什么要这样做" description="站点的市场推广表达必须建立在白皮书级事实和真实界面证据之上。">
+
+1. 避免站点与主产品脱节。
+2. 避免把规划能力写成已实现。
+3. 让截图、白皮书、代码事实和页面说明始终在同一基线上。
+
+</SiteSection>

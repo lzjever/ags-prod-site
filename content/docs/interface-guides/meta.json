@@ -2,10 +2,21 @@
   "title": "界面与功能说明",
   "pages": [
     "index",
+    "workspace-select",
+    "workspace-login",
+    "workspace-projects",
+    "dialog-project-create",
     "project-overview",
     "project-chat-session",
+    "project-notebook-list",
+    "dialog-notebook-task-create",
     "project-notebook-task-detail",
     "project-files",
+    "project-credentials",
+    "project-members",
+    "project-resource-policy",
+    "project-usage",
+    "project-settings",
     "project-endpoints",
     "project-audit"
   ]

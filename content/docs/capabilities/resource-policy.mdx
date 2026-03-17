@@ -1,0 +1,33 @@
+---
+title: Resource Policy
+description: 围绕 endpoint 资源定义访问控制与 rate / spending 限制。
+---
+
+<Eyebrow>Govern Surface</Eyebrow>
+
+# Resource Policy
+
+Resource Policy 负责围绕 endpoint 资源定义访问控制与 rate / spending 限制。
+
+<SiteSection
+  title="治理模型"
+  description="当前策略围绕 project default、resource override 与 subject override 组织。"
+>
+
+1. `Project Defaults`
+2. `Resource Override`
+3. `Subject Override`
+4. 共同解析为 effective policy
+
+</SiteSection>
+
+<SiteSection
+  title="为什么重要"
+  description="管理员不仅要看到最终结果，也要能理解为什么这条有效策略会这样生效。"
+>
+
+1. 解释多层覆盖优先级。
+2. 让策略配置真正能在使用路径被执行。
+3. 让治理结果可以在 Audit 和 Usage 中被验证。
+
+</SiteSection>

@@ -1,4 +1,18 @@
 {
   "title": "核心能力",
-  "pages": ["index", "chat", "notebook", "files", "agents", "governance"]
+  "pages": [
+    "index",
+    "chat",
+    "notebook",
+    "files",
+    "agents",
+    "governance",
+    "endpoints",
+    "resource-policy",
+    "credentials",
+    "members",
+    "usage",
+    "audit",
+    "alerts-settings"
+  ]
 }

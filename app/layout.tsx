@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: '%s | AgentSmith Product Site',
   },
   description:
-    'AgentSmith 产品白皮书、功能说明与界面证据站点，围绕企业级 AI 控制平面与通用智能体运行环境构建。',
+    'AgentSmith 产品白皮书、能力说明与关键界面导览，帮助理解企业级 AI 控制平面与通用智能体运行环境。',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {

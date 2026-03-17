@@ -10,32 +10,32 @@ import { cn } from '@/lib/cn';
 const featureCards = [
   {
     title: 'Chat',
-    description: '以项目为上下文发起对话，低门槛进入企业级 AI 使用。',
+    description: '在项目上下文中发起对话，让团队以更低门槛开始使用 AI。',
     href: '/docs/capabilities/chat',
   },
   {
     title: 'Notebook',
-    description: '把输入、执行、trace 和 artifacts 组织成统一任务界面。',
+    description: '把输入、执行、trace 和 artifacts 组织成统一任务空间。',
     href: '/docs/capabilities/notebook',
   },
   {
     title: 'Files',
-    description: '让项目文件库、本地挂载和运行产物形成可复用资产。',
+    description: '让项目文件库、本地挂载和运行产物沉淀为可复用资产。',
     href: '/docs/capabilities/files',
   },
   {
     title: 'Agents',
-    description: '把强大但脚本化的智能体升级为项目级正式执行能力。',
+    description: '把原本偏脚本化的智能体能力带入项目级正式工作流。',
     href: '/docs/capabilities/agents',
   },
   {
     title: 'Governance',
-    description: '围绕 endpoints、policy、usage、audit 形成统一治理主线。',
+    description: '围绕 endpoints、policy、usage、audit 建立统一治理主线。',
     href: '/docs/capabilities/governance',
   },
   {
     title: '智能体运行专题',
-    description: '集中讲清 AgentSmith 为什么不只是一个 Agent UI。',
+    description: '解释 AgentSmith 为什么不只是一个 Agent UI，而是一套运行环境。',
     href: '/docs/agent-runtime/why-not-just-agent-ui',
   },
 ] as const;
@@ -43,17 +43,17 @@ const featureCards = [
 const audienceCards = [
   {
     title: '给产品与管理者',
-    description: '快速理解产品定位、范围边界、核心价值和成熟度判断。',
+    description: '快速理解产品定位、范围边界、核心价值与整体结构。',
     href: '/docs/whitepaper',
   },
   {
     title: '给售前与交付',
-    description: '直接查看双主线叙事、核心能力亮点与真实界面证据。',
+    description: '快速查看关键能力、典型界面与实际使用方式。',
     href: '/docs/interface-guides',
   },
   {
     title: '给设计与研发',
-    description: '从架构、能力、任务流和状态治理角度理解全站内容。',
+    description: '从架构、能力和任务流角度理解产品如何整体运作。',
     href: '/docs/architecture',
   },
 ] as const;
@@ -61,7 +61,7 @@ const audienceCards = [
 const heroVisuals = [
   {
     title: '项目入口',
-    note: '以项目为主语，把 AI 使用与治理界面收拢到同一入口。',
+    note: '在同一项目上下文中进入聊天、任务、文件与治理能力。',
     src: '/api/reference-assets/project-overview.png',
     objectPosition: '52% 22%',
     scale: 1.24,
@@ -71,7 +71,7 @@ const heroVisuals = [
   },
   {
     title: 'Notebook 执行',
-    note: '任务消息、状态与产物同屏，更像真正可回看的执行对象。',
+    note: '任务消息、执行状态与产物集中呈现，便于持续回看与复用。',
     src: '/api/reference-assets/project-notebook-task-detail.png',
     objectPosition: '54% 29%',
     scale: 1.18,
@@ -81,7 +81,7 @@ const heroVisuals = [
   },
   {
     title: 'Chat 会话',
-    note: '保留线程列表的同时，把主回答区拉到视觉核心。',
+    note: '多轮线程与结果输出保持在同一项目上下文中连续展开。',
     src: '/api/reference-assets/project-chat-session.png',
     objectPosition: '52% 28%',
     scale: 1.15,
@@ -91,7 +91,7 @@ const heroVisuals = [
   },
   {
     title: 'Files 资产层',
-    note: '局部强调本地挂载说明，突出文件资产化与平台协同。',
+    note: '项目文件库、本地挂载与运行产物在同一上下文中协同。',
     src: '/api/reference-assets/project-files.png',
     objectPosition: '50% 36%',
     scale: 1.15,
@@ -109,12 +109,12 @@ export default function HomePage() {
           <div className="space-y-5">
             <Eyebrow>Enterprise AI Control Plane</Eyebrow>
             <h1 className="max-w-4xl text-5xl font-semibold tracking-tight text-white md:text-6xl">
-              把企业级 AI 使用、治理与通用智能体运行放进
+              把企业级 AI 使用、治理与智能体运行放进
               <span className="site-gradient-text">同一个控制平面。</span>
             </h1>
             <p className="max-w-3xl text-lg leading-8 text-[rgb(var(--site-text-secondary))]">
-              AgentSmith 为企业提供项目级 AI 使用入口、资源治理链路和通用智能体统一运行环境，让
-              Chat、Notebook、Files、Agents 与审计证据形成闭环。
+              AgentSmith 让团队在统一项目上下文中使用 AI、运行智能体、管理资源与回看审计，把
+              Chat、Notebook、Files、Agents 与治理能力连接为同一套工作系统。
             </p>
           </div>
           <div className="flex flex-wrap gap-4">
@@ -129,28 +129,28 @@ export default function HomePage() {
               href="/docs/interface-guides"
               className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--site-border))] bg-[rgb(var(--site-bg-surface-high)/0.5)] px-5 py-3 text-sm font-semibold text-white hover:border-[rgb(var(--site-accent)/0.4)]"
             >
-              查看真实界面
+              查看产品界面
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <div className="rounded-[var(--site-radius-lg)] border border-[rgb(var(--site-border-subtle))] bg-[rgb(var(--site-bg-surface-high)/0.42)] p-4">
               <Waypoints className="h-5 w-5 text-[rgb(var(--site-accent))]" />
-              <p className="mt-3 text-sm font-semibold text-white">双主线定位</p>
-              <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">控制平面 + 智能体运行环境</p>
+              <p className="mt-3 text-sm font-semibold text-white">双主线结构</p>
+              <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">控制平面 + 运行环境</p>
             </div>
             <div className="rounded-[var(--site-radius-lg)] border border-[rgb(var(--site-border-subtle))] bg-[rgb(var(--site-bg-surface-high)/0.42)] p-4">
               <Bot className="h-5 w-5 text-[rgb(var(--site-accent))]" />
               <p className="mt-3 text-sm font-semibold text-white">Notebook 主线</p>
-              <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">统一任务界面承接复杂执行</p>
+              <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">统一任务空间承接复杂执行</p>
             </div>
             <div className="rounded-[var(--site-radius-lg)] border border-[rgb(var(--site-border-subtle))] bg-[rgb(var(--site-bg-surface-high)/0.42)] p-4">
               <FileStack className="h-5 w-5 text-[rgb(var(--site-accent))]" />
               <p className="mt-3 text-sm font-semibold text-white">文件资产化</p>
-              <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">输入、产物与本地挂载协同</p>
+              <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">输入、产物与本地挂载协同沉淀</p>
             </div>
             <div className="rounded-[var(--site-radius-lg)] border border-[rgb(var(--site-border-subtle))] bg-[rgb(var(--site-bg-surface-high)/0.42)] p-4">
               <ShieldCheck className="h-5 w-5 text-[rgb(var(--site-accent))]" />
-              <p className="mt-3 text-sm font-semibold text-white">治理证据闭环</p>
+              <p className="mt-3 text-sm font-semibold text-white">治理闭环</p>
               <p className="mt-1 text-sm text-[rgb(var(--site-text-secondary))]">Endpoints / Policy / Usage / Audit</p>
             </div>
           </div>
@@ -190,10 +190,10 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-[rgb(var(--site-accent))]">
                 <span>Project-Scoped AI</span>
                 <span className="h-1 w-1 rounded-full bg-[rgb(var(--site-accent))]" />
-                <span>Evidence-First Storytelling</span>
+                <span>Governed Execution</span>
               </div>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-[rgb(var(--site-text-secondary))]">
-                首页主视觉现在直接使用真实界面裁切后的关键区域，优先强调项目入口、任务执行、对话体验与文件资产层，而不是把整张后台截图缩成缩略图。
+                从项目总览到任务执行，再到文件资产与治理链路，AgentSmith 把原本分散的企业 AI 工作收拢为连续、可回看、可治理的项目流程。
               </p>
             </div>
           </div>
@@ -218,7 +218,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
               通用智能体落地问题
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">很多 Agent 不是能力不够，而是运行方式不适合团队。</h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">很多 Agent 不是能力不够，而是运行方式还不适合团队。</h2>
             <ul className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
               <li>本地目录、脚本、凭据与输出文件难以长期管理。</li>
               <li>命令行和临时文件工作流难以扩散到更广泛团队成员。</li>
@@ -237,7 +237,7 @@ export default function HomePage() {
             <h2 className="mt-4 text-2xl font-semibold text-white">企业级 AI 控制平面</h2>
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
               以 workspace / project 组织 AI 使用，以 endpoint 为治理主线，把 Usage、Policy、Audit、
-              Members 与 Settings 统一在同一套项目结构下。
+              Members 与 Settings 统一进同一套项目结构。
             </p>
           </div>
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
@@ -246,7 +246,7 @@ export default function HomePage() {
             </p>
             <h2 className="mt-4 text-2xl font-semibold text-white">通用智能体运行环境</h2>
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
-              以 Notebook + Files + Agents 为统一用户入口，把输入、执行、trace、artifacts 与运行工作目录收敛到同一任务链路。
+              以 Notebook + Files + Agents 串联输入、执行、trace、artifacts 与运行工作目录，让智能体任务形成连续链路。
             </p>
           </div>
         </div>
@@ -257,9 +257,9 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             核心能力
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white">围绕项目级 AI 使用、治理与执行形成统一骨架。</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">围绕项目级 AI 使用、治理与执行形成统一能力骨架。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            第一版优先突出能直接支撑对外讲解和内部对齐的能力面，所有亮点都可以进一步下钻到白皮书、模块页和界面证据页。
+            从整体定位到关键能力，再到典型操作流程，AgentSmith 以统一的产品结构承接企业级 AI 使用、治理与智能体执行。
           </p>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -275,7 +275,7 @@ export default function HomePage() {
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
               智能体运行链路
             </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-white">Notebook、Files、Agents 不是三个孤立页面，而是一条运行链路。</h2>
+            <h2 className="text-3xl font-semibold tracking-tight text-white">Notebook、Files、Agents 不是三个孤立能力，而是一条连续运行链路。</h2>
             <p className="text-[rgb(var(--site-text-secondary))]">
               用户通过 Notebook 创建任务，从 Files / URL / 历史 artifacts 输入上下文，绑定 Agent 与 Endpoint，最终把 trace 与产物回流为项目资产。
             </p>
@@ -299,11 +299,11 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8 max-w-3xl space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-            真实界面证据
+            关键界面
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white">真实页面，而不是概念草图。</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">从真实产品界面理解关键能力与工作方式。</h2>
           <p className="text-[rgb(var(--site-text-secondary))]">
-            关键卖点都能落到真实界面与说明页，不把白皮书和推广表达做成两套互相脱节的话术。
+            对话、任务、文件、端点与审计等关键能力，都可以在实际产品界面中看到对应操作方式与结果呈现。
           </p>
         </div>
         <ReferenceGrid />
@@ -314,7 +314,7 @@ export default function HomePage() {
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             继续阅读
           </p>
-          <h2 className="text-3xl font-semibold tracking-tight text-white">按你的角色进入最合适的内容路径。</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">从你的关注点继续了解 AgentSmith。</h2>
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {audienceCards.map((card) => (

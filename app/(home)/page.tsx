@@ -43,18 +43,18 @@ const featureCards = [
 
 const audienceCards = [
   {
-    title: '给产品与管理者',
-    description: '快速看清这套产品解决什么问题，为什么它比单点 AI 工具更适合团队长期采用。',
+    title: '先看产品摘要',
+    description: '了解这套产品如何帮助团队把 AI 使用、治理与智能体执行放进同一套工作结构。',
     href: '/docs/whitepaper',
   },
   {
-    title: '给售前与交付',
-    description: '直接进入关键能力和真实界面，更容易讲清产品价值、落地方式和差异化。',
+    title: '先看关键界面',
+    description: '直接浏览主要界面，了解项目中的对话、任务、文件、资源与审计如何协同工作。',
     href: '/docs/interface-guides',
   },
   {
-    title: '给设计与研发',
-    description: '从架构、任务流和能力关系出发，理解这套系统为什么能稳定运作。',
+    title: '先看系统结构',
+    description: '查看工作区、项目、任务执行和治理回看如何在同一套系统中持续衔接。',
     href: '/docs/architecture',
   },
 ] as const;

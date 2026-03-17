@@ -36,7 +36,7 @@ description: 解释前端工作台、API 入口、执行环境以及 Usage 和 A
 
 后端入口会先完成 Bearer Token 校验，再匹配项目路由、评估项目权限，并根据不同模块把请求分发到工作区、项目、文件库、治理、聊天或任务执行处理链路。当前代码中的 `request-handler`、`project-route-handler` 和 `projects-route-match` 已经体现出这种统一入口模式: 路由虽然很多，但鉴权、权限门禁和错误映射的方式是一致的。
 
-这意味着 Chat、Notebook、Files、Endpoints、Members、Usage 和 Audit 并不是各自独立的接口集合。它们共享同一套项目作用域，也共享相对一致的权限和错误语义。
+Chat、Notebook、Files、Endpoints、Members、Usage 和 Audit 并不是各自独立的接口集合。它们共享同一套项目作用域，也共享相对一致的权限和错误语义。
 
 </SiteSection>
 

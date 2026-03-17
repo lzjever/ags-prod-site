@@ -2,6 +2,7 @@ import { cn } from '@/lib/cn';
 import { FocusedScreenshot } from '@/components/site/focused-screenshot';
 
 export function ScreenshotFrame({
+  preset,
   src,
   alt,
   caption,
@@ -12,8 +13,9 @@ export function ScreenshotFrame({
   note,
   viewportClassName,
 }: {
-  src: string;
-  alt: string;
+  preset?: string;
+  src?: string;
+  alt?: string;
   caption?: string;
   className?: string;
   objectPosition?: string;
@@ -25,6 +27,7 @@ export function ScreenshotFrame({
   return (
     <figure className={cn('space-y-3', className)}>
       <FocusedScreenshot
+        preset={preset}
         src={src}
         alt={alt}
         objectPosition={objectPosition}

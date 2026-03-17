@@ -12,12 +12,22 @@
     "dialog-notebook-task-create",
     "project-notebook-task-detail",
     "project-files",
+    "dialog-file-library-create",
+    "dialog-file-library-mount-access",
+    "dialog-file-library-delete-denied",
+    "project-agents",
+    "dialog-agent-create",
+    "dialog-agent-connection-info",
     "project-credentials",
+    "dialog-credential-create",
     "project-members",
+    "dialog-member-invite",
     "project-resource-policy",
     "project-usage",
     "project-settings",
     "project-endpoints",
-    "project-audit"
+    "dialog-endpoint-create",
+    "project-audit",
+    "drawer-audit-detail"
   ]
 }

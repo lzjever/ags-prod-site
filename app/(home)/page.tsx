@@ -60,44 +60,67 @@ const audienceCards = [
 
 const heroVisuals = [
   {
-    title: '项目入口',
-    note: '在同一项目上下文中进入聊天、任务、文件与治理能力。',
-    src: '/api/reference-assets/project-overview.png',
-    objectPosition: '52% 22%',
-    scale: 1.24,
+    preset: 'project-overview-home',
     className: 'lg:left-0 lg:top-0 lg:w-[68%]',
-    viewportClassName: 'aspect-[1.08/1]',
     floatClassName: 'site-float-slow',
   },
   {
-    title: 'Notebook 执行',
-    note: '任务消息、执行状态与产物集中呈现，便于持续回看与复用。',
-    src: '/api/reference-assets/project-notebook-task-detail.png',
-    objectPosition: '54% 29%',
-    scale: 1.18,
+    preset: 'project-notebook-task-detail-home',
     className: 'lg:right-0 lg:top-16 lg:w-[54%]',
-    viewportClassName: 'aspect-[0.88/1]',
     floatClassName: 'site-float-delay',
   },
   {
-    title: 'Chat 会话',
-    note: '多轮线程与结果输出保持在同一项目上下文中连续展开。',
-    src: '/api/reference-assets/project-chat-session.png',
-    objectPosition: '52% 28%',
-    scale: 1.15,
+    preset: 'project-chat-session-home',
     className: 'lg:bottom-10 lg:left-6 lg:w-[60%]',
-    viewportClassName: 'aspect-[1.2/1]',
     floatClassName: 'site-float-reverse',
   },
   {
-    title: 'Files 资产层',
-    note: '项目文件库、本地挂载与运行产物在同一上下文中协同。',
-    src: '/api/reference-assets/project-files.png',
-    objectPosition: '50% 36%',
-    scale: 1.15,
+    preset: 'project-files-home',
     className: 'lg:bottom-0 lg:right-8 lg:w-[42%]',
-    viewportClassName: 'aspect-[0.96/1]',
     floatClassName: 'site-float-soft',
+  },
+] as const;
+
+const enterpriseChallenges = [
+  {
+    title: '使用场景碎片化',
+    description: '对话、任务、文件、端点与成员管理往往分散在不同工具和流程中。',
+  },
+  {
+    title: '治理链路不连续',
+    description: '资源限制、用量观察、异常排查和审计回看常常彼此脱节。',
+  },
+  {
+    title: '智能体结果难沉淀',
+    description: '很多执行过程停留在终端或临时目录里，难以复用、协作和追溯。',
+  },
+] as const;
+
+const runtimeSteps = [
+  {
+    step: '01',
+    title: '创建任务',
+    description: '以 Notebook 创建长期任务，而不是一次性会话。',
+  },
+  {
+    step: '02',
+    title: '补充上下文',
+    description: '把文件、URL 与历史产物带入同一任务上下文。',
+  },
+  {
+    step: '03',
+    title: '绑定执行能力',
+    description: '选择 Agent 与 Endpoint，明确由谁执行、用什么资源执行。',
+  },
+  {
+    step: '04',
+    title: '回传过程',
+    description: 'trace、状态、消息与 artifacts 持续回传到同一任务界面。',
+  },
+  {
+    step: '05',
+    title: '沉淀资产',
+    description: '结果回流到项目文件与治理链路，形成后续可复用的资产。',
   },
 ] as const;
 
@@ -158,32 +181,14 @@ export default function HomePage() {
         <div className="relative">
           <div className="grid gap-4 lg:hidden">
             {heroVisuals.map((visual) => (
-              <FocusedScreenshot
-                key={visual.title}
-                src={visual.src}
-                alt={visual.title}
-                label={visual.title}
-                note={visual.note}
-                objectPosition={visual.objectPosition}
-                scale={visual.scale}
-                viewportClassName={visual.viewportClassName}
-              />
+              <FocusedScreenshot key={visual.preset} preset={visual.preset} />
             ))}
           </div>
           <div className="site-surface relative hidden h-[640px] overflow-hidden rounded-[32px] p-6 lg:block">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgb(var(--site-accent)/0.18),transparent_24%),radial-gradient(circle_at_80%_18%,rgb(255_255_255/0.08),transparent_18%),linear-gradient(180deg,rgb(255_255_255/0.02),transparent_32%,transparent_80%,rgb(7_8_12/0.35))]" />
             {heroVisuals.map((visual) => (
-              <div key={visual.title} className={cn('absolute', visual.className, visual.floatClassName)}>
-                <FocusedScreenshot
-                  src={visual.src}
-                  alt={visual.title}
-                  label={visual.title}
-                  note={visual.note}
-                  objectPosition={visual.objectPosition}
-                  scale={visual.scale}
-                  viewportClassName={visual.viewportClassName}
-                  className="shadow-[0_22px_60px_rgba(0,0,0,0.38)]"
-                />
+              <div key={visual.preset} className={cn('absolute', visual.className, visual.floatClassName)}>
+                <FocusedScreenshot preset={visual.preset} className="shadow-[0_22px_60px_rgba(0,0,0,0.38)]" />
               </div>
             ))}
             <div className="absolute bottom-6 left-6 right-6 rounded-[24px] border border-[rgb(var(--site-border-strong)/0.4)] bg-[linear-gradient(135deg,rgb(var(--site-bg-base)/0.9),rgb(var(--site-bg-panel)/0.82))] px-5 py-4 backdrop-blur">
@@ -202,27 +207,49 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12">
+        <div className="mb-8 max-w-3xl space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
+            落地难点
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">真正阻碍企业 AI 落地的，是流程分裂而不是模型能力。</h2>
+          <p className="text-[rgb(var(--site-text-secondary))]">
+            当使用、治理和执行分散在不同工具里时，团队很难把 AI 工作稳定地纳入日常业务流程。
+          </p>
+        </div>
+        <div className="grid gap-4 lg:grid-cols-3">
+          {enterpriseChallenges.map((item, index) => (
+            <div key={item.title} className="site-surface relative overflow-hidden rounded-[var(--site-radius-xl)] p-7">
+              <div className="absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgb(var(--site-accent)/0.8),transparent)]" />
+              <p className="text-xs font-semibold tracking-[0.18em] text-[rgb(var(--site-accent))]">0{index + 1}</p>
+              <h3 className="mt-4 text-2xl font-semibold tracking-tight text-white">{item.title}</h3>
+              <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              为什么需要 AgentSmith
+              AgentSmith 的回答
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">企业 AI 真正复杂的，不是再接一个模型。</h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">把使用、治理与执行放进同一项目工作流。</h2>
             <ul className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
-              <li>多团队、多项目如何在一个可治理环境中使用 AI。</li>
-              <li>Chat、Notebook、Files、Agents 如何共享同一套资源与约束体系。</li>
-              <li>谁在使用什么、花费多少、出了什么问题，如何追溯。</li>
+              <li>团队成员在统一项目上下文中使用 Chat、Notebook、Files 与 Agents。</li>
+              <li>端点、策略、用量、成员与审计通过同一治理主线连接起来。</li>
+              <li>任务过程、产物与文件资产持续沉淀，方便回看、复用与协作。</li>
             </ul>
           </div>
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              通用智能体落地问题
+              运行方式升级
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">很多 Agent 不是能力不够，而是运行方式还不适合团队。</h2>
+            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">把偏脚本化的 Agent 工作流升级成团队可用能力。</h2>
             <ul className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
-              <li>本地目录、脚本、凭据与输出文件难以长期管理。</li>
-              <li>命令行和临时文件工作流难以扩散到更广泛团队成员。</li>
-              <li>运行结果难以沉淀成项目资产，也难以进入治理与审计视角。</li>
+              <li>任务不再依赖临时命令行上下文，而是进入统一任务空间。</li>
+              <li>文件、端点、凭据与智能体能力能够在项目内持续复用。</li>
+              <li>执行过程与治理记录自然接上同一套项目资产与审计能力。</li>
             </ul>
           </div>
         </div>
@@ -270,28 +297,36 @@ export default function HomePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-12">
-        <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
-          <div className="max-w-3xl space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              智能体运行链路
-            </p>
-            <h2 className="text-3xl font-semibold tracking-tight text-white">Notebook、Files、Agents 不是三个孤立能力，而是一条连续运行链路。</h2>
-            <p className="text-[rgb(var(--site-text-secondary))]">
-              用户通过 Notebook 创建任务，从 Files / URL / 历史 artifacts 输入上下文，绑定 Agent 与 Endpoint，最终把 trace 与产物回流为项目资产。
-            </p>
+        <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
+            <div className="max-w-3xl space-y-3">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
+                智能体运行链路
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight text-white">Notebook、Files、Agents 不是三个孤立能力，而是一条连续运行链路。</h2>
+              <p className="text-[rgb(var(--site-text-secondary))]">
+                用户通过 Notebook 创建任务，从 Files / URL / 历史 artifacts 输入上下文，绑定 Agent 与 Endpoint，最终把 trace 与产物回流为项目资产。
+              </p>
+            </div>
+            <div className="mt-8 grid gap-4 lg:grid-cols-5">
+              {runtimeSteps.map((item) => (
+                <div
+                  key={item.step}
+                  className="rounded-[var(--site-radius-md)] border border-[rgb(var(--site-border))] bg-[rgb(var(--site-bg-surface-high)/0.48)] p-4"
+                >
+                  <p className="text-xs font-semibold tracking-[0.18em] text-[rgb(var(--site-accent))]">{item.step}</p>
+                  <p className="mt-2 text-sm font-semibold text-white">{item.title}</p>
+                  <p className="mt-2 text-sm leading-6 text-[rgb(var(--site-text-secondary))]">{item.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-8 grid gap-4 lg:grid-cols-5">
-            {['创建 Task', '添加 Inputs', '绑定 Agent / Endpoint', '回传 Trace / Artifacts', '沉淀项目资产'].map((item, index) => (
-              <div
-                key={item}
-                className="rounded-[var(--site-radius-md)] border border-[rgb(var(--site-border))] bg-[rgb(var(--site-bg-surface-high)/0.48)] p-4"
-              >
-                <p className="text-xs font-semibold tracking-[0.18em] text-[rgb(var(--site-accent))]">
-                  0{index + 1}
-                </p>
-                <p className="mt-2 text-sm font-semibold text-white">{item}</p>
-              </div>
-            ))}
+          <div className="grid gap-4">
+            <FocusedScreenshot preset="project-notebook-task-detail-guide" className="shadow-[0_18px_40px_rgba(0,0,0,0.22)]" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <FocusedScreenshot preset="project-files-guide" className="shadow-[0_18px_40px_rgba(0,0,0,0.22)]" glow={false} />
+              <FocusedScreenshot preset="project-agents-topic" className="shadow-[0_18px_40px_rgba(0,0,0,0.22)]" glow={false} />
+            </div>
           </div>
         </div>
       </section>

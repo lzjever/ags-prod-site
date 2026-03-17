@@ -12,13 +12,7 @@ export function ReferenceGrid() {
           className="site-surface overflow-hidden rounded-[var(--site-radius-lg)] transition-transform duration-300 hover:-translate-y-1.5"
         >
           <FocusedScreenshot
-            src={page.image}
-            alt={page.title}
-            label={page.label}
-            note={page.note}
-            objectPosition={page.objectPosition}
-            scale={page.scale}
-            viewportClassName={page.viewportClassName}
+            preset={page.preset}
             className="rounded-b-none"
             glow={false}
           />

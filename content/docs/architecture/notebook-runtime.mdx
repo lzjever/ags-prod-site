@@ -1,0 +1,88 @@
+---
+title: Notebook 运行链路与智能体执行环境
+description: 解释 Notebook 为什么不仅是任务页面，也是通用智能体的统一执行界面与运行时资产组织层。
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# Notebook 运行链路与智能体执行环境
+
+Notebook 是 AgentSmith 架构中最值得单独展开的一部分。它表面上是一组任务页面，实际上承担了更深的角色: 把过去散落在命令行、本地目录、临时文件和脚本中的执行过程，重新组织成项目内可追踪、可回看、可复用的一条任务链路。
+
+<TopicHero
+  eyebrow="Notebook Runtime"
+  title="把复杂执行变成长期任务，而不是一次性命令。"
+  description="在 Notebook 中，任务、输入、conversation、trace 和 artifacts 会围绕同一个 Task 持续组织，这使通用智能体能够以更稳定的方式进入项目工作流。"
+  presets={['project-notebook-list-guide', 'project-notebook-task-detail-guide']}
+  chips={['Task', 'Inputs', 'Trace', 'Artifacts', 'Agent', 'Sandbox']}
+/>
+
+<SiteSection
+  eyebrow="Why Notebook"
+  title="Notebook 解决的不是“再做一个聊天页”，而是执行组织问题"
+  description="它把一次复杂任务拆成更容易理解和复用的对象。"
+>
+
+在 Notebook 中，一次执行不会只留下最后一句回复。系统会保留任务本身、输入来源、消息过程、trace 事件和输出产物，使后续成员能够继续理解、继续推进或继续复用。这一点对复杂分析、内容生产和工程辅助类任务尤为重要，因为这些工作往往需要更长上下文，也需要更明确的结果沉淀方式。
+
+对通用智能体而言，Notebook 还承担了统一操作界面的职责。用户不需要先学习命令行运行方式，再手动准备目录、复制文件和检查输出位置，而是可以在同一个任务界面里完成准备输入、发起执行、查看过程和保存结果。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Runtime Assets"
+  title="一次 Notebook 执行会生成一组清晰的运行时资产"
+  description="这些对象共同构成了任务的执行上下文。"
+>
+
+当前实现已经具备比较明确的任务运行时模型。系统会为任务解析输入引用，准备 `task workspace` 工作目录，生成 `.mbos/task-inputs.json` 输入清单，并在工作目录中创建 `artifacts/` 目录用于收集执行产物。同时，任务工作区还会生成 `AGENTS.md` 等辅助文件，明确 headless 执行约束和输入获取方式。
+
+从产品角度看，这意味着 Notebook 已经不只是一个前端表单。它背后对应的是一整套任务级运行环境: 输入从哪里来、产物落到哪里、如何取回附加文件、任务如何被后续再次引用，系统都开始以明确对象的方式组织这些内容。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Preflight"
+  title="执行开始前，系统会先完成资源和治理预检"
+  description="这一步确保任务不是“点了就跑”，而是在可用资源和可解释限制内运行。"
+>
+
+Notebook 任务在正式执行前，会检查目标智能体是否可用、绑定的 Endpoint 是否可访问，并执行治理预检。资源策略、速率限制和支出限制都会在这里被检查；如果不满足条件，系统会明确终止执行，并把失败原因写入后续证据链。这类设计非常关键，因为它避免了用户进入一种“看起来能运行，实际上必然失败”的状态。
+
+从代码和测试可以看到，这种预检并不是单独为 Notebook 临时添加的逻辑，而是沿用了项目级治理规则。也就是说，Notebook 的任务执行并没有绕开资源和策略体系，而是与整个项目的治理结构保持一致。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Execution Paths"
+  title="External Agent 与 Internal Sandbox 是两条不同但兼容的执行路径"
+  description="它们共享任务上下文，只是在运行环境上有所区别。"
+>
+
+在外部智能体路径下，系统会通过 WebSocket 协议与 agent 建立连接，并持续接收 delta、trace 和 artifact 事件。在内部智能体路径下，系统会先通过 sandbox manager 和 pod manager 准备受控运行环境，再把任务交给 runner 执行。后一条路径当前仍在继续收敛，但它已经明确表达了产品方向: 通用智能体最终不必长期依赖用户本地宿主环境，而可以进入更可控的执行环境。
+
+无论使用哪条路径，Notebook 都会保持同样的任务视图。对用户来说，这意味着他们面对的是统一工作流，而不是两套完全不同的操作方式。
+
+</SiteSection>
+
+<FlowSteps
+  title="Notebook 执行的关键步骤"
+  description="从创建任务到结果沉淀，系统会按固定顺序组织对象和事件。"
+  steps={[
+    { step: '01', title: '创建 Task', description: '用户建立任务并选择执行智能体，让一次工作拥有稳定对象。' },
+    { step: '02', title: '组织 Inputs', description: '输入可以来自 Files、URL 或历史 artifacts，不需要手工拼接目录。' },
+    { step: '03', title: '完成预检', description: '系统检查 agent、endpoint、权限与资源策略，阻断不可执行路径。' },
+    { step: '04', title: '准备 Workspace', description: '任务工作目录、输入清单、凭据文件和技能挂载被统一准备。' },
+    { step: '05', title: '回传过程与结果', description: 'conversation、trace、artifacts 与最终状态持续回传，并沉淀为项目资产。' },
+  ]}
+/>
+
+<SiteSection
+  eyebrow="Why It Matters"
+  title="这条链路让通用智能体更接近团队可用能力，而不是专家工具"
+  description="它改变的不是某个功能按钮，而是整个使用方式。"
+>
+
+如果没有 Notebook 这样的统一任务界面，团队通常只能把通用智能体当成少数人会配置的本地工具。输入文件、凭据、运行目录和结果文件都会散落在个人环境里，协作和回看成本都很高。Notebook 让这些对象开始进入项目结构，并与 Files、Artifacts、Usage 和 Audit 保持连续关系，因此智能体执行不再是一次性实验，而更像长期可维护的工作能力。
+
+</SiteSection>

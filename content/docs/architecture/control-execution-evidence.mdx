@@ -1,0 +1,87 @@
+---
+title: 控制面、执行面与证据面
+description: 解释前端工作台、API 入口、执行环境以及 Usage 和 Audit 如何共同构成一套连续系统。
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# 控制面、执行面与证据面
+
+从产品界面上看，AgentSmith 像是一套项目工作台；从实现上看，它同时也是一套控制面、执行面和证据面相互咬合的系统。只有这三部分同时成立，项目里的 AI 使用才会既能跑起来，也能长期维持清晰边界。
+
+<ValueStatement
+  eyebrow="Architecture View"
+  title="控制、执行和证据不是三个孤岛，而是一条连续路径。"
+  summary="用户在页面里发起的每一个动作，都会沿着统一路由、统一权限和统一资源对象继续下沉。"
+  detail="同一项执行既要能调用资源和智能体，也要能把用量、限制命中和审计事件写回系统，因此 AgentSmith 的后端不是简单的接口集合，而是围绕 Project 持续工作的编排层。"
+/>
+
+<SiteSection
+  eyebrow="Control Plane"
+  title="前端工作台负责组织上下文，而不是承担最终规则"
+  description="界面层解决的是“用户如何理解系统”，不是“系统最终信任什么”。"
+>
+
+当前前端采用统一的项目壳层，把 `overview`、`chat`、`notebook`、`files`、`agents`、`endpoints`、`resource-policy`、`credentials`、`members`、`usage`、`audit` 和 `settings` 组织进同一个 app shell。用户进入任一项目模块时，项目上下文都会从 URL 和项目数据中被同步确认，这保证了团队始终在同一项目边界内工作。
+
+但前端并不是唯一权威。权限门禁和模块显隐可以帮助用户少走弯路，真正的资源可用性、权限判断和策略执行仍然由后端负责。这样做的好处是，体验可以保持轻量，而安全边界不会依赖界面约定。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="API Entry"
+  title="API 入口层把很多模块收束成一套统一规则"
+  description="这也是 AgentSmith 能同时承接 Use 与 Govern 的关键原因之一。"
+>
+
+后端入口会先完成 Bearer Token 校验，再匹配项目路由、评估项目权限，并根据不同模块把请求分发到工作区、项目、文件库、治理、聊天或任务执行处理链路。当前代码中的 `request-handler`、`project-route-handler` 和 `projects-route-match` 已经体现出这种统一入口模式: 路由虽然很多，但鉴权、权限门禁和错误映射的方式是一致的。
+
+对产品来说，这意味着 Chat、Notebook、Files、Endpoints、Members、Usage 和 Audit 并不是几组各自演化的接口。它们共享同一套项目作用域，也共享相对一致的权限和错误语义，这让模块数量增加时，系统仍然能保持稳定结构。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Execution Plane"
+  title="执行面负责把任务真正跑起来，并把过程结构化回传"
+  description="AgentSmith 并不把执行当作黑盒调用。"
+>
+
+在 Notebook 和部分智能体场景中，任务执行会继续下沉到执行层。当前实现已经区分了 external agent 和 internal agent 两类路径。外部智能体通过 WebSocket 协议接入，内部智能体则会在 sandbox manager 和 pod manager 的帮助下准备运行环境。无论走哪条路径，系统都会为一次执行准备清晰的上下文，包括用户、项目、任务、endpoint、输入引用和凭据文件。
+
+这条链路的重点不是“把请求发送出去”，而是把执行过程变成系统可理解的对象。消息增量、trace 事件、artifacts 以及最终的完成或失败状态，都会被持续回传给前端和后端。这也是 Notebook 能够承接复杂任务，而不只是显示一条最终结果的原因。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Evidence Plane"
+  title="Usage 和 Audit 让治理不只停留在配置，而是形成持续可见的事实"
+  description="证据面不是附属模块，而是运行闭环的一部分。"
+>
+
+执行前的治理预检、执行中的资源消耗和执行后的异常结果，都会被写回到证据链中。当前后端已经把项目审计事件和使用事实收敛到统一记录器中，Notebook 执行的治理失败也会写入相应的 audit 事件和 usage fact。换句话说，系统不仅知道“有没有配置策略”，也知道“这条策略是否真的在使用路径中生效过”。
+
+这类证据面很重要，因为企业团队最终需要回答的不只是“功能有没有”，而是“最近发生了什么”“为什么会被拒绝”“这次执行消耗了什么”“谁改了哪些关键设置”。Usage 和 Audit 正是在这里承担长期价值。
+
+</SiteSection>
+
+<FlowSteps
+  title="一次执行如何穿过三层结构"
+  description="同一个动作会依次经过控制面、执行面和证据面。"
+  steps={[
+    { step: '01', title: '用户发起动作', description: '成员在项目中进入 Chat 或 Notebook，并选择要使用的资源。' },
+    { step: '02', title: '入口完成校验', description: '后端验证身份、项目权限和目标路由，并准备请求上下文。' },
+    { step: '03', title: '治理预检通过', description: '系统检查 Endpoint 访问、限流或支出限制，阻断不允许的执行。' },
+    { step: '04', title: '执行持续回传', description: '智能体回传消息、trace 和产物，前端与后端同步得到实时状态。' },
+    { step: '05', title: '证据写回系统', description: '使用量、审计事件和任务记录一起沉淀，为后续解释和追溯提供依据。' },
+  ]}
+/>
+
+<SiteSection
+  eyebrow="Product Meaning"
+  title="为什么这条链路比单独堆功能更重要"
+  description="因为企业级 AI 使用的难点往往不在单点能力，而在能力之间是否能够对齐。"
+>
+
+很多产品都能提供聊天界面、文件页面或模型配置页，但如果这些能力之间没有共享的项目作用域、共享的权限判断和共享的证据链，团队最终仍然需要依赖外部流程去拼接它们。AgentSmith 的意义就在于，它已经把控制、执行和证据三部分放进了同一套系统里，因此后续要补强的更多是闭环深度，而不是重新发明结构。
+
+</SiteSection>

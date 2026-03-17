@@ -1,66 +1,83 @@
 ---
 title: 整体架构总览
-description: 解释 System / Workspace / Project / Use / Govern 的整体结构以及前后端执行链路。
+description: 从产品层级、执行链路和治理闭环三个视角，理解 AgentSmith 为什么是一套可长期运行的系统。
 ---
 
 <Eyebrow>Architecture</Eyebrow>
 
 # 整体架构总览
 
-从产品视角看，AgentSmith 最值得理解的并不是页面数量，而是它如何把使用面、治理面和执行链路组织成一套清晰系统。
+AgentSmith 的架构并不是把若干页面拼成一个工作台，而是把企业使用 AI 时最容易分裂的几件事重新组织到同一套结构中: 业务团队如何进入系统、项目如何承接日常工作、模型与智能体如何被统一调用、结果如何沉淀为资产、限制与审计又如何在同一条链路上持续生效。
 
 <TopicHero
   eyebrow="Architecture"
-  title="用项目容器把使用面、治理面与执行链路组织进同一系统。"
-  description="AgentSmith 的整体结构围绕 System / Workspace / Project 展开，再把 Use 与 Govern 两个视角统一收进同一个项目容器。"
-  presets={['project-overview-guide', 'project-endpoints-guide']}
-  chips={['System', 'Workspace', 'Project', 'Use', 'Govern']}
+  title="用同一个项目容器，承接使用、执行、治理与证据。"
+  description="AgentSmith 围绕 System、Workspace、Project 三层骨架展开，再在 Project 内并列组织 Use 与 Govern 两个面，让团队不必在“好用”和“可控”之间做结构性取舍。"
+  presets={['project-overview-guide', 'project-notebook-task-detail-guide']}
+  chips={['System', 'Workspace', 'Project', 'Use', 'Govern', 'Evidence']}
 />
 
-这套结构可以概括为五个层次: `System Admin`、`Workspace`、`Project`、`Use 面` 和 `Govern 面`。它们并不是上下脱节的管理层级，而是共同决定了团队如何在同一业务边界内使用 AI、运行智能体并持续完成治理。
-
 <ValueStatement
-  eyebrow="Architecture Value"
-  title="这套架构最重要的意义，是把使用、治理和回看放回同一个业务边界。"
-  summary="企业真正难的从来不是做出更多入口，而是让入口背后的资源、结果和责任都能落在同一套结构里。"
-  detail="Project 之所以是核心容器，正是因为它同时承接了团队使用、执行记录和治理主线。"
+  eyebrow="Core Judgement"
+  title="Project 不是导航层级，而是整套系统的业务容器。"
+  summary="对 AgentSmith 来说，真正重要的不是用户能看到多少模块，而是这些模块是否围绕同一个项目边界持续工作。"
+  detail="Chat、Notebook、Files、Agents 负责完成日常使用；Endpoints、Policy、Credentials、Members、Usage、Audit、Settings 负责约束资源、解释限制并留下证据。它们共同落在 Project 之中，因此结果、责任和回看都不会漂移到系统外。"
 />
 
 <SiteSection
-  eyebrow="Product Skeleton"
-  title="项目容器是整个系统的共同骨架"
-  description="Use 与 Govern 不是两套系统，而是在同一个项目容器中并列切换。"
+  eyebrow="Three Layers"
+  title="这套产品先分层，再在项目内收口"
+  description="System、Workspace、Project 三层结构解决的是边界问题，而不是菜单问题。"
 >
 
-`System Admin` 负责工作区生命周期和底层基线，`Workspace` 则提供真实租户边界，让业务空间先被清楚划定。真正承接日常工作的，是 `Project` 这一层: 它既容纳 Chat、Notebook、Files、Agents 这些使用面，也容纳 Endpoints、Policy、Credentials、Members、Usage、Audit、Settings 这些治理能力。也正因为它们共同收拢到项目容器之中，AgentSmith 才不会演化成两套互不相干的系统。
+`System` 只负责系统级控制平面，例如工作区生命周期、身份提供商配置和开通状态。`Workspace` 负责租户或业务域边界，让用户先进入正确的业务空间，再进入后续项目。`Project` 则承接真正的工作对象: 对话、任务、文件、智能体、模型资源、成员和审计证据都围绕它持续组织。
+
+这种结构的好处在于，系统管理和业务使用不会互相打断。管理员可以在系统侧开通工作区，业务团队随后进入工作区、创建项目，并在同一个项目中完成使用和治理，而不需要在多个彼此脱节的后台之间来回切换。
 
 </SiteSection>
 
 <SiteSection
-  eyebrow="Execution"
-  title="前端界面、执行协议与治理能力通过统一链路相连"
-  description="AgentSmith 的差异化之一，是把任务执行、资源治理与审计回看组织在同一系统里。"
+  eyebrow="Use And Govern"
+  title="Use 面与 Govern 面不是两套系统"
+  description="它们面向不同任务，但共享同一个项目对象、同一组资源和同一条证据链。"
 >
 
-前端界面承载的是用户交互与项目上下文，API 入口层则负责鉴权、路由和执行编排，而智能体会通过协议化事件把 delta、trace、artifact 和 done/error 持续回传。Notebook 的任务记录、Usage 的消耗事实和 Audit 的回看依据因此能够彼此对齐，不再分散在不同系统里。这正是 AgentSmith 架构层面最有价值的地方之一。
+Use 面负责让团队把 AI 真正用起来。Chat 提供最快的交互入口，Notebook 提供面向任务的执行界面，Files 提供长期可复用的项目资产层，Agents 则把外部或内部执行能力接入到项目中。Govern 面负责让这套使用方式能够长期运行。Endpoints 定义模型资源，Resource Policy 解释访问限制，Credentials 承接连接信息，Members 负责协作边界，Usage 呈现消耗状态，Audit 保留回看与追溯依据。
+
+这两组能力并不是彼此隔离的。Chat 和 Notebook 会使用项目中定义好的 Endpoint；Notebook 的执行又会产出 trace 和 artifacts；这些记录会继续进入 Usage 和 Audit。也正因为使用面和治理面共享同一组对象，AgentSmith 才更像一套系统，而不是“前台 + 后台”的松散组合。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Execution Path"
+  title="界面、后端和执行环境通过同一条运行链路连接"
+  description="从代码和测试来看，AgentSmith 已经具备比较清晰的执行骨架。"
+>
+
+当前实现中，前端应用负责页面与交互状态，项目壳层通过统一 sidebar 将 `overview`、`chat`、`notebook`、`files`、`agents`、`endpoints`、`resource-policy`、`credentials`、`members`、`usage`、`audit`、`settings` 等模块组织到同一套项目工作台中。后端的 API entry 负责鉴权、路由、权限判断和协议编排，再把请求分发到项目、文件库、治理、聊天和任务执行等具体处理链路。
+
+在执行层，Notebook 任务并不是一次前端按钮点击后的黑盒请求。执行前会检查 agent 可用性、endpoint 状态和治理预检；执行时会携带 `workspace_id`、`project_id`、`task_id`、`run_id`、`endpoint_id`、输入引用和凭据文件等上下文；运行过程中会持续回传 `message`、`trace_event`、`artifact`、`done/error`；执行结束后，使用量与审计事件会被统一记录下来。
 
 </SiteSection>
 
 <FlowSteps
-  title="从项目使用到治理回看的一条主链路"
-  description="产品界面、后端执行与治理能力不是三套松散系统，而是一条连续主链路。"
+  title="AgentSmith 的一条完整产品主链路"
+  description="从开通工作区到形成治理证据，中间没有脱节的环节。"
   steps={[
-    { step: '01', title: '进入项目', description: '成员在项目中进入聊天、任务、文件和治理能力。' },
-    { step: '02', title: '发起执行', description: '任务通过 Endpoint 与 Agent 调用实际模型和执行能力。' },
-    { step: '03', title: '回传过程', description: '消息、trace、artifacts 和状态持续回传到界面。' },
-    { step: '04', title: '形成记录', description: 'Usage、Audit 与任务结果在同一项目语境中沉淀。' },
-    { step: '05', title: '继续治理', description: '管理员基于统一记录完成限制、排查与追溯。' },
+    { step: '01', title: '开通 Workspace', description: '系统管理员创建并发布工作区，明确业务空间和身份边界。' },
+    { step: '02', title: '建立 Project', description: '业务团队在工作区内创建项目，让成员、资源和任务落入同一容器。' },
+    { step: '03', title: '配置资源', description: '项目管理员准备 Endpoint、Credentials、Members 和资源策略。' },
+    { step: '04', title: '发起工作', description: '成员通过 Chat、Notebook、Files、Agents 完成对话、执行和资料协作。' },
+    { step: '05', title: '形成证据', description: 'trace、artifacts、usage 和 audit 持续沉淀，支持后续解释、限制和追溯。' },
   ]}
 />
 
-<TalkTrack
-  audience="Topic Takeaway"
-  title="这页最想讲清什么"
-  talk="AgentSmith 的架构价值不在于层级画得完整，而在于这些层级共同保证了团队在同一业务边界里使用、治理和回看 AI 工作。"
-  proof="也正因为这条主线足够清晰，产品才更像一套可长期运行的系统，而不是几个功能模块的并排陈列。"
-/>
+<SiteSection
+  eyebrow="Why This Matters"
+  title="这套架构真正解决的不是功能堆叠，而是企业 AI 的结构性问题"
+  description="很多团队并不缺入口，真正缺的是统一边界、统一资源和统一证据。"
+>
+
+如果 Chat、任务执行、文件管理和治理证据各自生长，团队最终会面对几套彼此不一致的系统: 一套看起来好用，一套负责限制，还有一套只在出问题时才被打开。AgentSmith 选择的是另一条路: 让项目成为唯一的业务容器，让资源、执行和证据始终围绕这个容器工作。这样一来，团队可以先把 AI 用起来，再把它稳定地运行下去，而不是在不同阶段被迫更换工作方式。
+
+</SiteSection>

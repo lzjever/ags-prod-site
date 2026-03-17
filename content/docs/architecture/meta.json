@@ -1,4 +1,10 @@
 {
   "title": "产品架构",
-  "pages": ["index", "task-flows"]
+  "pages": [
+    "index",
+    "system-workspace-project",
+    "control-execution-evidence",
+    "notebook-runtime",
+    "task-flows"
+  ]
 }

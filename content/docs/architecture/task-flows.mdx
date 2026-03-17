@@ -1,20 +1,99 @@
 ---
 title: 关键任务流
-description: 展示从系统管理到项目使用，再到治理审查的核心任务流。
+description: 用角色和任务的视角，解释 AgentSmith 从工作区开通、项目协作到智能体执行和治理回看的连续链路。
 ---
 
 <Eyebrow>Task Flows</Eyebrow>
 
 # 关键任务流
 
-AgentSmith 的主任务流，从来都不是一组彼此独立的页面跳转，而是一条从工作区开通到项目协作、再到治理回看的连续路径。系统管理员先开通 Workspace，团队成员随后创建并进入 Project，在其中使用 Chat、Notebook、Files 和 Agents，平台则持续形成 Usage、Audit、Trace 和 Artifacts 这些可回看的事实记录，管理员最终再基于这些记录完成限制、审查和追溯。
+架构文档如果只画模块，很容易让读者知道“系统有什么”，却看不清“系统为什么必须这样组织”。关键任务流这一页要回答的，正是人如何进入系统、任务如何在系统中推进、结果又如何回到治理和证据层中。
+
+<ValueStatement
+  eyebrow="Reading Lens"
+  title="AgentSmith 的主线不是页面跳转，而是任务不断被组织、执行、沉淀和回看。"
+  summary="从工作区开通到项目协作，再到智能体执行和治理证据，核心是同一组对象持续向前流动。"
+  detail="也因此，理解任务流会比单独理解任一页面更接近产品本质。"
+/>
 
 <SiteSection
-  eyebrow="Differentiator"
-  title="通用智能体运行流是当前最值得强调的一条任务流"
-  description="这条链路把 Notebook、Files、Agents、Artifacts 和治理预检组织成统一流程。"
+  eyebrow="Mainline"
+  title="系统主线从 Workspace 开通开始，在 Project 中形成持续工作"
+  description="这是所有使用面和治理面最终共享的一条总路径。"
 >
 
-真正体现 AgentSmith 差异化的，是通用智能体运行这条链路。用户会先创建 Notebook Task，再把项目文件、URL 或历史 artifacts 带入上下文，随后绑定 Agent 与 Endpoint，由系统完成权限和治理预检。执行过程中，conversation、trace 与 artifacts 会持续回传，而最终结果又会沉淀为项目资产和后续任务的输入。这条链路清楚说明了 AgentSmith 为什么不是单点调用工具，而是一套面向团队长期运作的系统。
+系统管理员先创建并发布 Workspace，让业务团队获得可用入口。随后，工作区管理员或具备创建权限的成员建立 Project。成员进入项目后，开始使用 Chat、Notebook、Files 和 Agents 完成日常工作，执行过程中的结果、trace、usage 和 audit 事件也会持续沉淀。管理员再基于这些事实完成资源限制、排查和追溯。
+
+这条主线之所以重要，是因为它把“开通、使用、治理、回看”串成了一条闭环，而不是分布在几套不同系统中。用户不需要先在一个地方完成工作，再到另一个地方解释为什么出问题，也不需要在第三个地方寻找证据。
+
+</SiteSection>
+
+<FlowSteps
+  title="AgentSmith 的总任务流"
+  description="从组织视角看，整套系统围绕这一条主线持续运行。"
+  steps={[
+    { step: '01', title: '开通 Workspace', description: '系统管理员完成工作区配置与发布，让业务入口真正可用。' },
+    { step: '02', title: '建立 Project', description: '团队在工作区内创建项目，让成员、资源和任务进入共同边界。' },
+    { step: '03', title: '组织使用面', description: '成员通过 Chat、Notebook、Files、Agents 开始日常 AI 工作。' },
+    { step: '04', title: '沉淀执行事实', description: 'trace、artifacts、usage 和 audit 事件在项目内持续写回。' },
+    { step: '05', title: '完成治理回看', description: '管理员根据策略、用量和审计记录继续进行限制、排查与审查。' },
+  ]}
+/>
+
+<SiteSection
+  eyebrow="Daily Work"
+  title="普通成员最常见的路径，是从 Chat 或 Notebook 开始"
+  description="Use 面并不是两条孤立入口，而是轻量交互与长任务执行的分工。"
+>
+
+当用户需要快速提问、分析或连续对话时，通常会从 Chat 开始。这里强调的是低门槛和快速反馈。当工作需要更长链路、更明确输入、更完整结果沉淀时，用户会进入 Notebook，把任务、输入、执行过程和产物组织为一条长期记录。Files 则贯穿这两条路径，为对话和任务提供上下文输入，并承接后续结果沉淀。
+
+这种分工让产品既能满足“快速开始”的需要，也能承接“复杂任务持续推进”的需要，而不会把所有工作都塞进一个过度复杂的界面。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="General Agent"
+  title="通用智能体运行流是当前最关键的一条产品链路"
+  description="它体现了 AgentSmith 不只是一个聊天入口，而是一套执行组织系统。"
+>
+
+用户进入项目后，会先打开 Notebook，选择或创建一个 Task，再把项目文件、URL 或历史 Artifact 作为输入加入上下文。接下来，系统根据任务绑定的 Agent 和 Endpoint 完成资源与权限预检，准备任务工作目录、输入清单、凭据文件和技能挂载，然后由 external agent 或 internal sandbox 执行。执行过程中，conversation、trace 和 artifacts 持续回传，最终结果既保留在任务历史中，也可以沉淀到项目文件库。
+
+这条链路的重要性在于，它把运行前、运行中和运行后的关键对象全部放进项目结构中管理。用户不需要单独管理本地目录、结果文件和执行日志，团队也更容易围绕同一个任务继续协作。
+
+</SiteSection>
+
+<FlowSteps
+  title="通用智能体运行任务流"
+  description="这条路径最能体现 Notebook、Files、Agents、Artifacts 和治理预检之间的关系。"
+  steps={[
+    { step: '01', title: '进入 Notebook', description: '用户在项目中选择或创建任务，开始一次可持续回看的执行。' },
+    { step: '02', title: '准备输入', description: '系统接入 Files、URL 或历史 Artifact，让输入来源保持清晰。' },
+    { step: '03', title: '绑定资源', description: '任务选择 Agent 与 Endpoint，并检查权限、策略和资源可用性。' },
+    { step: '04', title: '组织运行环境', description: 'Task workspace、凭据文件和技能挂载被统一准备，执行条件在系统内完成。' },
+    { step: '05', title: '沉淀结果', description: 'conversation、trace、artifacts 和后续 usage/audit 一起进入项目历史。' },
+  ]}
+/>
+
+<SiteSection
+  eyebrow="Governance"
+  title="治理任务流不是另一条平行线，而是使用结果的继续处理"
+  description="Govern 面真正关注的是资源、限制和证据是否与实际使用对齐。"
+>
+
+项目管理员会先准备 Endpoint、Credentials、Members 和资源策略，让资源范围和协作边界先被定义清楚。随着 Chat、Notebook 和 Agents 被实际使用，Usage 会持续记录消耗状态，Audit 会持续记录关键变更和异常事件。管理员随后再基于这些事实判断限制是否需要调整、异常是否需要排查、成员和资源边界是否需要修正。
+
+也就是说，治理并不是先独立存在、再等待业务使用，而是使用结果不断回流到治理视图中。正因为如此，Usage 和 Audit 才不是普通统计页，而是项目运行情况的事实层。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Practical Meaning"
+  title="为什么任务流比功能清单更能说明 AgentSmith"
+  description="因为团队真正感知产品价值的，是能不能顺着一条自然路径把事情做完。"
+>
+
+如果一套系统只能说明“这里能聊天、那里能配资源、另一页能看日志”，读者仍然很难理解这些功能为什么要同时存在。任务流则把这些能力放回真实使用顺序中。它告诉我们: 工作区为什么要先发布、项目为什么必须是中心容器、Notebook 为什么要成为统一任务界面、Usage 和 Audit 为什么必须与执行结果连起来。只有把这些问题放在同一条流里，AgentSmith 的架构价值才会真正清楚。
 
 </SiteSection>

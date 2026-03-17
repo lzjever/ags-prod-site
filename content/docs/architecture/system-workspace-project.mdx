@@ -1,0 +1,78 @@
+---
+title: 系统层级与产品容器
+description: 解释 System、Workspace、Project 三层结构分别承担什么职责，以及为什么 Project 是整套产品的中心容器。
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# 系统层级与产品容器
+
+理解 AgentSmith，最先要理解的不是某一个页面，而是用户始终处在什么层级。系统超级管理员、工作区管理员、项目成员和项目管理员看到的并不是同一层结构。正因为这些层级被清楚分开，身份、权限和业务上下文才能保持稳定。
+
+<TopicHero
+  eyebrow="System Model"
+  title="先有清晰层级，后有稳定使用。"
+  description="AgentSmith 将 system 管理、workspace 边界和 project 工作单元分开处理，让每一种角色只面对与自己相关的控制面。"
+  presets={['workspace-select-guide', 'project-overview-guide']}
+  chips={['System Admin', 'Workspace', 'Project', 'Owner', 'Admin', 'Member']}
+/>
+
+<SiteSection
+  eyebrow="System"
+  title="System 层负责开通与控制，不承接业务使用"
+  description="这一层对应系统超级管理员视角，而不是项目成员视角。"
+>
+
+System 层的职责是管理工作区生命周期、身份提供商配置和开通状态。它回答的是“这个工作区是否已经准备好对业务开放”这类问题，而不是“某个项目里谁能用什么模型”。在 PRD 和当前实现中，只有 `ready` 的 workspace 才会真正对业务入口可见；发布失败、重新发布、禁用和删除也都在这一层被控制。
+
+这意味着 System 层并不是另一个业务后台，而是平台控制平面。它负责创建边界、发布边界和关闭边界，但不会直接承接项目中的 AI 使用行为。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Workspace"
+  title="Workspace 是真实业务空间，而不是可有可无的分组"
+  description="用户必须先进入工作区，再进入项目，后续权限和资源范围才有一致前提。"
+>
+
+Workspace 承接的是租户或业务域边界。它决定用户先进入哪一个业务空间，再在这个空间中查看项目、创建项目或进入工作区设置。这样做的意义在于，项目并不是漂浮在系统中的孤立对象，而是总是属于某个清晰的业务范围。
+
+对于普通成员来说，Workspace 是进入业务的第一层上下文。对于工作区管理员来说，Workspace 则负责项目创建权限和上层治理边界。它既把系统管理和项目工作隔开，也为项目后续的成员、资源和审计范围提供了稳定前提。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Project"
+  title="Project 是 AI 使用、资源治理和结果沉淀的共同容器"
+  description="这也是 AgentSmith 与很多零散 AI 工具最不一样的地方。"
+>
+
+Project 是整套产品真正的工作单元。成员在这里发起对话、组织 Notebook 任务、引用文件、调用智能体；管理员也在这里配置 Endpoint、资源策略、成员权限、用量限制和审计查看。也就是说，使用和治理并不是分别挂在个人账户之下，而是共同围绕项目展开。
+
+这种设计直接改变了团队处理 AI 工作的方式。文件不再只是某次对话的附件，任务不再只是一次命令行执行，审计也不再只是另一套后台里的日志。它们都会围绕同一个项目容器继续存在，并服务于后续的复用、协作和追溯。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Roles"
+  title="角色差异并不改变容器，只改变可见动作"
+  description="Owner、Admin、Member 使用的是同一个项目，而不是不同版本的产品。"
+>
+
+Project Creator 在创建项目后会自动成为 Owner。Owner 对项目生命周期承担最终责任，可以继续委派 Admin 处理日常治理工作。Admin 负责资源、策略、成员和审查等管理动作，普通成员则主要在 Use 面完成日常工作，并查看与自己相关的资源状态。当前代码中的 sidebar 和权限判断也体现了这一点: 模块结构保持统一，真正变化的是某个用户是否有权限进入某个模块或执行某个动作。
+
+这类角色分层很重要，因为它避免了“为了区分角色而做出多套界面”的复杂度。AgentSmith 选择的是同一项目容器、同一工作结构、不同权限门禁的方式，让团队在协作时始终对项目结构保持共同理解。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Design Choice"
+  title="为什么 Project 必须是中心，而不是个人会话或系统资源"
+  description="因为企业团队最终需要共享结果、共享责任，也共享治理边界。"
+>
+
+如果产品围绕个人账户来组织，任务、文件和执行结果最终会落回到个人上下文，很难形成团队级协作。如果产品围绕系统资源来组织，普通成员又会被迫先理解复杂治理结构，使用门槛会显著抬高。Project 提供的是一种中间但更稳定的组织方式: 既足够接近日常工作，又足够承接权限、资源和审计。
+
+因此，Project 在 AgentSmith 中不是导航上的一层，而是所有关键对象的共同落点。只要抓住这一点，后续的 Use 面和 Govern 面就会变得容易理解很多。
+
+</SiteSection>

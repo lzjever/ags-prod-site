@@ -22,6 +22,7 @@ export function ReferenceGrid() {
             </p>
             <h3 className="text-base font-semibold text-white">{page.title}</h3>
             <p className="text-sm leading-6 text-[rgb(var(--site-text-secondary))]">{page.summary}</p>
+            <p className="pt-1 text-sm font-medium text-[rgb(var(--site-accent))]">查看这张界面能讲清什么</p>
           </div>
         </Link>
       ))}

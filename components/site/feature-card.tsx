@@ -5,10 +5,12 @@ export function FeatureCard({
   title,
   description,
   href,
+  ctaLabel = '了解这项能力',
 }: {
   title: string;
   description: string;
   href: string;
+  ctaLabel?: string;
 }) {
   return (
     <Link
@@ -20,7 +22,7 @@ export function FeatureCard({
         <p className="text-sm leading-6 text-[rgb(var(--site-text-secondary))]">{description}</p>
       </div>
       <div className="mt-5 flex items-center gap-2 text-sm font-medium text-[rgb(var(--site-accent))]">
-        查看详情
+        {ctaLabel}
         <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
       </div>
     </Link>

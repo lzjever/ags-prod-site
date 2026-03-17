@@ -5,6 +5,7 @@ import { AudienceCard } from '@/components/site/audience-card';
 import { ReferenceGrid } from '@/components/site/reference-grid';
 import { Eyebrow } from '@/components/site/eyebrow';
 import { FocusedScreenshot } from '@/components/site/focused-screenshot';
+import { ValueStatement } from '@/components/site/value-statement';
 import { cn } from '@/lib/cn';
 
 const featureCards = [
@@ -145,14 +146,14 @@ export default function HomePage() {
               href="/docs/whitepaper"
               className="inline-flex items-center gap-2 rounded-full bg-[rgb(var(--site-accent))] px-5 py-3 text-sm font-semibold text-slate-950 transition-transform duration-200 hover:-translate-y-0.5"
             >
-              阅读产品白皮书
+              理解产品价值
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/docs/interface-guides"
               className="inline-flex items-center gap-2 rounded-full border border-[rgb(var(--site-border))] bg-[rgb(var(--site-bg-surface-high)/0.5)] px-5 py-3 text-sm font-semibold text-white hover:border-[rgb(var(--site-accent)/0.4)]"
             >
-              查看产品界面
+              浏览关键界面
             </Link>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
@@ -230,34 +231,41 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-6 lg:grid-cols-2">
-          <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              AgentSmith 的回答
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">把使用、治理与执行放进同一项目工作流。</h2>
-            <div className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
-              <p>
-                在 AgentSmith 里，团队成员不需要分别进入聊天工具、任务工具和治理后台工作，而是在同一个项目上下文中连续完成这些动作。产品因此不再只是“能用 AI”，而是能够让 AI 真正进入团队日常协作。
-              </p>
-              <p>
-                与此同时，端点、策略、用量、成员和审计始终沿着同一条治理主线展开，任务过程、执行产物和文件资产也会持续沉淀下来，让后续回看、复用和规模化推广都有稳定基础。
-              </p>
-            </div>
-          </div>
-          <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
-              运行方式升级
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight text-white">把偏脚本化的 Agent 工作流升级成团队可用能力。</h2>
-            <div className="mt-6 space-y-4 text-[rgb(var(--site-text-secondary))]">
-              <p>
-                许多智能体工作流之所以难以在团队里推广，不是因为能力不够，而是因为它们过于依赖个人命令行环境、临时目录和手工配置。AgentSmith 把这些原本偏脚本化的能力重新组织进统一任务空间，让执行真正成为产品能力，而不是少数人的经验。
-              </p>
-              <p>
-                文件、端点、凭据和智能体能力因此可以在项目内持续复用，执行过程和治理记录也会自然接回同一套资产与审计链路，让团队更容易从试点走向长期运行。
-              </p>
-            </div>
-          </div>
+          <ValueStatement
+            eyebrow="AgentSmith 的回答"
+            title="把使用、治理与执行放进同一项目工作流。"
+            summary="在 AgentSmith 里，团队成员不需要分别进入聊天工具、任务工具和治理后台工作，而是在同一个项目上下文中连续完成这些动作。产品因此不再只是“能用 AI”，而是能够让 AI 真正进入团队日常协作。"
+            detail="与此同时，端点、策略、用量、成员和审计始终沿着同一条治理主线展开，任务过程、执行产物和文件资产也会持续沉淀下来，让后续回看、复用和规模化推广都有稳定基础。"
+          />
+          <ValueStatement
+            eyebrow="运行方式升级"
+            title="把偏脚本化的 Agent 工作流升级成团队可用能力。"
+            summary="许多智能体工作流之所以难以在团队里推广，不是因为能力不够，而是因为它们过于依赖个人命令行环境、临时目录和手工配置。AgentSmith 把这些原本偏脚本化的能力重新组织进统一任务空间，让执行真正成为产品能力，而不是少数人的经验。"
+            detail="文件、端点、凭据和智能体能力因此可以在项目内持续复用，执行过程和治理记录也会自然接回同一套资产与审计链路，让团队更容易从试点走向长期运行。"
+          />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-12">
+        <div className="mb-8 max-w-3xl space-y-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
+            为什么值得长期采用
+          </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-white">这不是为了把更多 AI 功能塞进后台，而是为了把团队工作真正组织起来。</h2>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-3">
+          <ValueStatement
+            title="先让团队用起来"
+            summary="Chat 和项目上下文一起降低了上手门槛，让 AI 更容易进入真实工作，而不是停留在少数人的试验环境。"
+          />
+          <ValueStatement
+            title="再让结果留下来"
+            summary="Notebook、Files 和任务产物把一次次执行结果沉淀为项目资产，让价值能够被复用，而不是每次都从零开始。"
+          />
+          <ValueStatement
+            title="最后让企业管得住"
+            summary="Endpoints、Policy、Usage 和 Audit 把资源边界、成本感知和回看能力接成闭环，让长期运营真正可控。"
+          />
         </div>
       </section>
 

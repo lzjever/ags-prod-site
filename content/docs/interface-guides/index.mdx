@@ -1,29 +1,36 @@
 ---
-title: 关键界面导览
-description: 浏览 AgentSmith 的关键工作界面与主要操作方式。
+title: 界面与功能说明
+description: 通过核心工作界面理解 AgentSmith 如何承接对话、任务、文件、执行与治理。
 ---
 
 <Eyebrow>Product Interfaces</Eyebrow>
 
-# 关键界面导览
+# 界面与功能说明
 
-本章节汇集了 AgentSmith 中最重要的工作界面。你可以从这里了解一个项目如何承接日常对话、任务执行、文件管理、模型资源配置和审计回看，也可以更快熟悉不同角色在系统中的主要操作方式。
+这一组页面展示的是 AgentSmith 中最重要的工作界面。你会看到一个项目如何承接日常对话、长期任务、文件资产、智能体接入、模型资源管理和审计回看，也会看到这些页面为什么并不是彼此独立的后台，而是一条连续工作流的不同环节。
 
-如果你第一次使用 AgentSmith，建议先查看 `项目总览`、`Chat 多轮会话` 和 `Notebook 任务详情`。这三类页面能够帮助你先建立对核心工作流的理解。之后再浏览文件、智能体、资源管理和审计页面，会更容易把整套系统看成一条连续的工作链，而不是若干分散功能。
+如果你想先建立对产品的整体直觉，最值得先看的通常是 `项目总览`、`Chat 多轮会话`、`Notebook 任务详情`、`文件库管理`、`智能体列表`、`Endpoint 管理` 和 `审计日志`。这几页基本覆盖了日常使用、复杂执行、资料沉淀、资源接入和后续回看。
+
+<SiteSection
+  title="核心工作界面"
+  description="这些页面最能代表 AgentSmith 的日常工作方式。"
+>
 
 <Cards>
-  <Card title="项目总览" href="/docs/interface-guides/project-overview" />
-  <Card title="Chat 多轮会话" href="/docs/interface-guides/project-chat-session" />
-  <Card title="Notebook 任务详情" href="/docs/interface-guides/project-notebook-task-detail" />
-  <Card title="文件库管理" href="/docs/interface-guides/project-files" />
-  <Card title="智能体列表" href="/docs/interface-guides/project-agents" />
-  <Card title="Endpoint 管理" href="/docs/interface-guides/project-endpoints" />
-  <Card title="审计日志" href="/docs/interface-guides/project-audit" />
+  <Card title="项目总览" href="/docs/interface-guides/project-overview" description="看一个项目如何把日常使用入口与治理入口放进同一工作台。" />
+  <Card title="Chat 多轮会话" href="/docs/interface-guides/project-chat-session" description="看项目中的快速交互如何保持上下文连续。" />
+  <Card title="Notebook 任务详情" href="/docs/interface-guides/project-notebook-task-detail" description="看任务、trace 和产物如何形成可持续回看的执行记录。" />
+  <Card title="文件库管理" href="/docs/interface-guides/project-files" description="看资料和结果如何在同一项目资产层中持续沉淀。" />
+  <Card title="智能体列表" href="/docs/interface-guides/project-agents" description="看执行能力如何被接入项目并被成员持续使用。" />
+  <Card title="Endpoint 管理" href="/docs/interface-guides/project-endpoints" description="看模型资源如何被定义、复用并进入任务链路。" />
+  <Card title="审计日志" href="/docs/interface-guides/project-audit" description="看关键变化和异常如何被保留在项目记录中。" />
 </Cards>
+
+</SiteSection>
 
 <SiteSection
   title="关键配置页面"
-  description="这些页面展示了项目如何接入模型资源、凭据、智能体和成员。"
+  description="这些页面展示了项目如何建立资源、任务和协作对象。"
 >
 
 <Cards>
@@ -38,12 +45,10 @@ description: 浏览 AgentSmith 的关键工作界面与主要操作方式。
 </SiteSection>
 
 <SiteSection
-  title="推荐阅读顺序"
-  description="如果你希望快速建立完整认识，可以按下面顺序浏览。"
+  title="这一组页面适合回答什么问题"
+  description="如果你更关心产品实际使用方式，这里通常是最直接的入口。"
 >
 
-先看 `项目总览`、`Chat 多轮会话` 和 `Notebook 任务详情`，了解项目中的常见工作如何展开。接着查看 `文件库管理`、`智能体列表` 以及相关创建页面，可以继续了解资料、执行能力和输出结果如何被组织和复用。
-
-最后进入 `Endpoint 管理`、`资源策略`、`用量与限额`、`审计日志` 等页面，就能看到系统如何在资源控制、消耗观察和变更追溯之间保持一致。
+这组页面最适合回答这些问题: 一个项目中的主要工作入口有哪些；复杂任务是如何被组织和回看的；资料、产物和本地目录如何持续衔接；智能体和模型资源如何进入日常使用；出现限制、异常或关键变更后，后续应该到哪里查看。
 
 </SiteSection>

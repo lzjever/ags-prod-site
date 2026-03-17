@@ -7,51 +7,66 @@ description: 概览 AgentSmith 作为企业级 AI 控制平面与通用智能体
 
 # AgentSmith 产品摘要
 
-AgentSmith 是 MBOS 面向企业场景打造的多租户 AI 控制平面，同时也是一套适合团队落地通用智能体的运行环境。它的目标不是再提供一个零散 AI 入口，而是帮助企业把 AI 真正纳入长期、可治理、可协作的业务体系。
+AgentSmith 是一套面向企业的 AI 控制平面，也是一套面向团队的智能体运行环境。它的目标不是再提供一个分散的 AI 入口，而是把企业真正关心的几件事放进同一套系统里: 如何在清晰边界内使用 AI，如何把复杂任务持续推进，如何让结果沉淀为项目资产，以及如何在需要时回看资源消耗、异常与变更。
 
-它要解决的，并不是“再接一个模型 API”这么局部的问题，而是企业在真正推进 AI 使用时最常遇到的结构性障碍。团队希望在同一个可治理的环境中使用 AI，希望 Chat、Notebook、Files 和 Agents 能共享统一的资源与边界，也希望在需要回看时能说清楚谁使用了什么、消耗了多少、哪里出现了异常。对于更复杂的智能体场景，团队还需要一种比本地命令行、临时目录和手工配置更容易落地的运行方式。AgentSmith 的意义，正是在于把这些分散需求收拢成同一套产品结构，让 AI 从试用阶段走向真正可持续的业务能力。
+很多团队在试用 AI 时很快就能跑通第一次调用，但真正进入业务之后，问题会迅速变得复杂。聊天记录和任务结果常常停留在个人环境里，输入资料和输出产物缺乏稳定落点，资源使用与限制彼此脱节，出了问题也很难回看清楚。对于更复杂的智能体场景，团队还往往需要在本地目录、临时脚本、独立 runner 和多套管理页面之间来回切换。AgentSmith 要解决的，正是这些阻碍 AI 走向长期采用的结构性问题。
 
 <ValueStatement
-  eyebrow="Why Now"
-  title="企业需要的不是又一个 AI 入口，而是一套能长期运行的产品结构。"
-  summary="当团队开始把 AI 用在真实业务里，问题很快就不再只是“接没接上模型”，而是流程能不能持续、结果能不能沉淀、资源能不能说清、出了问题能不能追溯。"
-  detail="AgentSmith 试图解决的，正是这些决定 AI 能否从试点走向长期采用的结构性问题。"
+  eyebrow="Why It Exists"
+  title="企业真正需要的，不是又一个 AI 入口，而是一套能持续运行的工作结构。"
+  summary="当团队开始把 AI 用在真实业务里，价值不再取决于是否能发起一次调用，而取决于流程能否持续、结果能否留下来、资源能否被解释、异常能否被追溯。"
+  detail="AgentSmith 的意义，在于把这些原本分散的问题收拢成同一套产品结构。"
 />
 
 <SiteSection
+  eyebrow="Core Judgement"
+  title="它既不是单纯的聊天产品，也不是只面向管理员的后台"
+  description="AgentSmith 试图把使用体验、资源治理和执行结果持续组织到一起。"
+>
+
+如果把 AgentSmith 只看作聊天产品，你会忽略它为什么要有 Project、Files、Notebook、Usage 和 Audit；如果把它只看作治理后台，你又会忽略它为什么要有任务、执行链路和智能体接入。它真正成立的原因，在于这两部分天然属于同一条业务主线。团队需要先把 AI 用起来，也需要让这些使用结果继续进入治理与协作；企业需要既看到使用体验，也看到资源边界和后续证据。
+
+这也是为什么 AgentSmith 会把工作区、项目、对话、任务、文件、智能体、模型资源、权限、用量和审计放在同一个系统中，而不是拆成若干松散工具。
+
+</SiteSection>
+
+<SiteSection
   eyebrow="Dual Mainlines"
-  title="这不是两个产品拼接，而是一套统一系统"
-  description="企业级 AI 控制平面与通用智能体运行环境，共同构成 AgentSmith 的整体结构。"
+  title="企业级 AI 控制平面与智能体运行环境，共同构成同一套产品"
+  description="这不是两个系统叠在一起，而是一套连续结构。"
 >
 
 <Cards>
   <Card
     title="企业级 AI 控制平面"
-    description="围绕 workspace / project / endpoint / policy / usage / audit 组织企业 AI 使用与治理。"
+    description="围绕 Workspace、Project、Endpoints、Policy、Members、Usage 和 Audit 组织日常使用与治理边界。"
   />
   <Card
     title="通用智能体运行环境"
-    description="围绕 Notebook / Files / Agents / Task Workspace / Artifacts 组织统一运行链路。"
+    description="围绕 Notebook、Files、Agents、Task Workspace 和 Artifacts 组织更适合团队落地的执行链路。"
   />
 </Cards>
 
 </SiteSection>
 
 <SiteSection
-  eyebrow="Value"
-  title="核心价值"
-  description="AgentSmith 的价值不在单点功能，而在于把使用、治理、审计与运行环境组织成一套统一系统。"
+  eyebrow="Business Value"
+  title="AgentSmith 的价值不在单点功能，而在于把整个链路接起来"
+  description="它让企业不必在“能用起来”和“能长期运行”之间反复取舍。"
 >
 
-AgentSmith 的真正价值，不在于某一个页面或某一项功能，而在于它把 AI 使用、资源治理、执行记录和结果沉淀组织成了同一套系统。企业可以围绕 `workspace / project` 这样的真实业务边界引入 AI，团队成员则在统一项目上下文中使用 Chat、Notebook、Files 和 Agents，而治理动作会继续围绕 endpoints、policy、usage、audit 形成闭环。最终，智能体任务产生的结果不会停留在个人环境中，而会继续沉淀为项目资产，进入后续协作。
+企业采用 AI 时，最难的通常不是第一步，而是后面的每一步能不能继续衔接。用户希望对话和任务有连续上下文，团队希望资料和结果能被复用，管理员希望资源限制和用量记录真实生效，负责人希望在出现异常或争议时能快速回看。AgentSmith 把这些目标放在同一套项目结构中组织，因此它更像一套企业能力底座，而不是某一个体验点的优化。
 
-因此，企业不必在“易用性”和“可控性”之间做取舍，也不必在“先试试”与“长期运营”之间反复重建流程。AgentSmith 会把这两组通常互相拉扯的目标放进同一套产品框架中持续组织。
+这意味着企业不必在“先试试看”与“进入长期运营”之间反复重建流程。团队从开始使用、推进任务、沉淀文件到回看用量和审计，都会沿着同一条主线继续发生。
 
 </SiteSection>
 
-<ValueStatement
-  eyebrow="Business Fit"
-  title="它更像一套企业能力底座，而不是单点体验优化。"
-  summary="AgentSmith 不是单纯优化一次对话、一次任务或一次配置动作，而是在帮助团队建立一套可以持续协作、持续治理、也能持续积累结果的 AI 工作系统。"
-  detail="这也是它更适合长期采用的原因: 它服务的不是一个瞬时场景，而是一条会不断重复发生的业务主线。"
-/>
+<SiteSection
+  eyebrow="Read Next"
+  title="接下来可以从三个方向继续理解这套产品"
+  description="白皮书负责立论，后续页面负责把结构和工作方式讲清楚。"
+>
+
+如果你想先理解产品边界，可以继续看 [定位与范围边界](/docs/whitepaper/positioning)。如果你想先看企业 AI 为什么常常在落地阶段失速，可以继续看 [为什么企业 AI 常常难以落地](/docs/whitepaper/why-enterprise-ai-breaks-down)。如果你更想直接看 AgentSmith 的结构性回答，可以继续看 [为什么是 AgentSmith](/docs/whitepaper/why-agentsmith)。
+
+</SiteSection>

@@ -1,40 +1,46 @@
 ---
 title: Governance 总览
-description: 说明为什么 endpoint-centric governance 是 AgentSmith 的统一治理主线。
+description: 说明 AgentSmith 如何围绕项目资源形成连续的治理主线。
 ---
 
 <Eyebrow>Govern Surface</Eyebrow>
 
 # Governance 总览
 
-AgentSmith 当前唯一治理主线是：`项目级 LLM endpoint 统一约束链路`。
+在 AgentSmith 中，治理不是独立于实际使用的后台能力，而是和对话、任务执行、智能体调用一起持续生效的主线。团队成员在项目中使用资源时，系统会同步判断资源是否可访问、限制是否命中、消耗如何累积，以及关键变化是否需要被记录下来。
 
-<SiteSection title="治理结构" description="治理能力会围绕资源定义、限制执行、用量观察和审计回看持续展开。">
+<SiteSection
+  title="治理围绕项目资源展开"
+  description="它关注的是谁能使用什么资源、可以使用到什么程度，以及后续如何回看。"
+>
 
-AgentSmith 的治理能力不是若干分散设置的集合，而是围绕同一组资源对象持续展开。资源如何定义、限制如何生效、消耗如何被观察、变化如何被回看，都会在同一项目中保持连续。
+AgentSmith 当前的治理主线围绕项目级 Endpoint 展开。Endpoint 定义模型资源，Resource Policy 决定访问与限制，Usage 用来观察实际消耗，Audit 用来回看关键事件与异常。因为这些能力都围绕同一对象工作，所以治理不会散成若干互不相关的设置页。
 
 </SiteSection>
 
 <SiteSection
-  title="主线对象"
-  description="治理不是围绕每个界面各自展开，而是围绕项目级 endpoint 资源展开。"
+  title="治理会在真实使用中生效"
+  description="资源限制不是写在纸面上的规则，而是会进入调用和任务执行链路。"
 >
 
-AgentSmith 的治理主线不是围绕每个界面各自长出一套规则，而是围绕项目级 endpoint 资源统一展开。Endpoints 负责资源配置入口，Resource Policy 负责访问与限制，Usage 承接用户视角的用量理解，Audit 则负责管理员视角的事件回看与追溯。正因为它们围绕同一个对象工作，整条治理链路才足够稳定。
+当成员发起对话或运行 Notebook 任务时，系统会在真正开始执行之前检查资源是否可用、访问是否被允许、是否命中速率限制，以及是否触及支出限制。如果条件不满足，任务会被明确阻断，后续也会留下可回看的使用和审计记录。这意味着治理不是事后解释，而是事前和事中都真实参与使用过程。
 
 </SiteSection>
 
 <SiteSection
-  title="统一治理主线"
-  description="Chat、Notebook、API 与资源管理会围绕同一条治理链路持续工作。"
+  title="治理的目标不是增加摩擦，而是让长期运行更可控"
+  description="对企业团队来说，持续可见比单次放开更重要。"
 >
 
-Chat、Notebook 和 API 不会各自形成独立治理体系。资源定义、访问限制、用量观察和审计回看会沿同一条主线持续工作，因此项目中的资源状态和限制结果会更容易保持一致。
+企业真正需要的不是一个完全没有边界的使用环境，而是一套可以放心长期运行的系统。治理能力的意义，不在于把系统变复杂，而在于让团队知道资源如何被使用、限制何时生效、异常发生在哪里，以及后续应该到哪里回看。这些信息一旦连续可见，AI 才更容易进入稳定业务流程。
 
 </SiteSection>
 
-<SiteSection title="治理如何落到实际使用中" description="治理主线最终要在项目成员的真实使用过程中持续生效。">
+<SiteSection
+  title="这条治理主线会和 Use 面持续对应"
+  description="它不会脱离项目上下文单独存在。"
+>
 
-真正有价值的治理，不是只停留在配置页面里。Endpoint 决定哪些模型资源可被使用，Resource Policy 决定谁可以如何使用这些资源，Usage 帮助成员理解消耗，Audit 帮助管理员回看变化与异常。也就是说，治理会持续出现在真实使用过程里，而不是只在出问题时才被想起。
+Chat、Notebook、Agents 和 Files 解决的是“如何把工作做起来”，Governance 解决的是“如何让这套工作长期可理解、可限制、可追溯”。两者围绕同一个项目继续发生，因此使用体验和治理边界不会彼此割裂。
 
 </SiteSection>

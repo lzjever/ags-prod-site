@@ -7,28 +7,28 @@ description: 以 Task 为核心对象，把输入、执行、trace 与 artifacts
 
 # Notebook
 
-Notebook 不是“再做一个 Chat”，而是 AgentSmith 当前最重要的统一智能体操作界面。
+Notebook 是 AgentSmith 中承接复杂工作的核心界面。它不是“再做一个聊天窗口”，而是把一次任务需要的输入、执行、过程回传和结果沉淀组织在同一个任务对象里，让团队能够持续推进、持续回看，也能把结果继续接回项目工作流。
 
-<SiteSection title="任务价值" description="Notebook 会把一次执行组织成可持续回看的长期任务。">
+<SiteSection title="为什么需要 Notebook" description="复杂工作需要的不只是对话，而是可持续回看的任务结构。">
 
-Notebook 的价值，在于它把复杂执行从临时过程升级成长期任务。团队不只是得到一次结果，而是得到一条可以继续回看、继续协作、继续复用的执行链路。
-
-</SiteSection>
-
-<SiteSection
-  title="核心对象"
-  description="Notebook 的用户心智应始终围绕 Task、Inputs、Conversation、Trace 与 Artifacts。"
->
-
-Notebook 的核心，不是再做一个聊天窗口，而是让用户以任务视角而不是命令行视角来操作智能体。输入可以来自 Files、URL 和历史 artifacts，运行过程可以通过 trace 回看，结果又会继续沉淀为后续可复用资产。这样一来，复杂执行就真正进入了项目工作流。
+对很多企业场景来说，一次工作并不会在一轮回复里结束。成员需要补充资料、切换输入、等待执行、查看过程、判断结果，再决定后续是否继续推进。如果这些步骤只靠一次次对话来承接，任务很快就会失去结构。Notebook 通过 Task 把这些内容持续保留下来，因此更适合分析、整理、生成和多轮推进这类工作。
 
 </SiteSection>
 
 <SiteSection
-  title="为什么是统一智能体入口"
-  description="它把原本分散在目录、脚本、终端输出与临时文件里的过程组织进同一个项目内工作流。"
+  title="Notebook 中最重要的对象是什么"
+  description="理解 Task、Inputs、Trace 和 Artifacts，就能理解 Notebook 的意义。"
 >
 
-Notebook 之所以能成为统一智能体入口，是因为它把原本分散在目录、脚本、终端输出与临时文件里的过程，组织进了同一个项目内工作流。用户会围绕 Task 创建、上下文输入、Agent 与 Endpoint 绑定、执行观察以及产物复用这些动作持续工作，而不是每次都重新拼装一条执行链路。
+Notebook 的中心不是消息框，而是 Task。一个 Task 会同时保留输入资料、消息过程、trace 事件、执行状态和产物文件。输入可以来自项目文件、URL 或历史 artifacts；执行过程会通过 trace 持续回传；生成的结果则会成为新的 artifacts。这样一来，团队看到的不再只是“最后一句回复”，而是一整条可继续使用的任务记录。
+
+</SiteSection>
+
+<SiteSection
+  title="它如何接入项目工作流"
+  description="Notebook 会把任务与文件、智能体、模型资源和治理主线持续对应起来。"
+>
+
+当用户在 Notebook 中运行任务时，系统会继续使用项目中的智能体和模型资源，检查相应的访问与限制，再把执行结果留在任务历史和项目文件资产中。后续如果需要查看消耗、排查异常或解释一次失败，也可以继续在 Usage 和 Audit 中回看相应事实。Notebook 因此不是孤立功能，而是把使用、执行、资产和治理接起来的关键节点。
 
 </SiteSection>

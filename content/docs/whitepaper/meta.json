@@ -1,4 +1,9 @@
 {
   "title": "产品白皮书",
-  "pages": ["index", "positioning"]
+  "pages": [
+    "index",
+    "positioning",
+    "why-enterprise-ai-breaks-down",
+    "why-agentsmith"
+  ]
 }

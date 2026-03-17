@@ -1,25 +1,52 @@
 ---
 title: 核心能力总览
-description: 从 Use 面与 Govern 面角度概览 AgentSmith 的核心能力结构。
+description: 从使用、执行与治理三条连续关系理解 AgentSmith 的核心能力结构。
 ---
 
 <Eyebrow>Capabilities</Eyebrow>
 
 # 核心能力总览
 
-AgentSmith 的能力结构不是“很多模块的集合”，而是围绕项目级 AI 使用、治理与智能体运行形成统一能力骨架。
+AgentSmith 的能力结构不是很多模块的平铺，而是一条连续工作链的不同组成部分。团队通常先从 Chat 或 Notebook 开始，随后引用文件资料、调用智能体能力，并在同一个项目中继续查看资源限制、用量变化和审计记录。也正因为如此，这些能力不能被理解为彼此独立的功能，而应被看成同一套系统中的不同角色。
 
 <ValueStatement
-  eyebrow="Capabilities"
+  eyebrow="Capability Structure"
   title="每一项能力都会继续连接到同一个项目工作流。"
-  summary="Chat 负责降低起步门槛，Notebook 负责承接复杂执行，Files 负责沉淀项目资产，Agents 负责连接执行能力，Governance 则确保这一切可以被长期理解和持续管理。"
-  detail="因此，团队在日常使用、任务执行、文件管理和资源治理之间不需要重新切换工作方式。"
+  summary="Chat 负责快速进入工作，Notebook 负责承接复杂任务，Files 负责沉淀输入和结果，Agents 负责接入执行能力，Governance 负责让资源、限制和事实保持一致。"
+  detail="能力之间不是先后分裂的关系，而是持续衔接的关系。"
 />
 
+<SiteSection
+  title="先用起来，再持续推进"
+  description="Use 面并不是一组孤立工具，而是一条从轻量交互到长期任务的连续路径。"
+>
+
+Chat 让团队在项目里快速开始工作，适合提问、讨论和连续对话；Notebook 则让更复杂的任务拥有明确的输入、过程和结果，适合长期推进和协作接手；Files 负责把资料和结果留下来，避免输入和产出散落在临时目录或个人环境中。对很多团队来说，这三者共同决定了 AI 使用能否从“偶尔能用”变成“真正进入工作流”。
+
+</SiteSection>
+
+<SiteSection
+  title="把执行能力变成团队能力"
+  description="智能体只有被正式接入项目，才能真正被团队长期使用。"
+>
+
+Agents 模块负责把外部智能体或平台托管智能体接入系统，使执行能力不再依赖某个人的本地环境。任务在选择智能体后，系统会继续组织运行环境、接收过程回传并保留结果。这样一来，智能体能力就不再只是“谁能在自己电脑上跑起来”，而会变成“团队可以在项目里持续使用的正式对象”。
+
+</SiteSection>
+
+<SiteSection
+  title="治理不是附属页，而是实际使用的一部分"
+  description="资源配置、访问限制、用量记录和审计回看会沿着真实使用链路持续生效。"
+>
+
+当成员在 Chat 或 Notebook 中调用资源时，系统不会把治理留在另一套后台里。Endpoints 负责定义模型资源，Resource Policy 决定访问和限制，Usage 反映真实消耗，Audit 记录关键变更与异常。对企业来说，这一点很重要，因为资源治理只有在真实使用链路中持续生效，才真正具有价值。
+
+</SiteSection>
+
 <Cards>
-  <Card title="Chat" href="/docs/capabilities/chat" description="让团队先在项目里用起来，再逐步进入更完整的执行与治理链路。" />
-  <Card title="Notebook" href="/docs/capabilities/notebook" description="把复杂执行升级成可回看、可复用、可协作的长期任务。" />
-  <Card title="Files" href="/docs/capabilities/files" description="把输入资料和运行产物沉淀成项目资产，而不是一次性附件。" />
-  <Card title="Agents" href="/docs/capabilities/agents" description="把原本依赖个人环境的执行能力纳入团队正式工作流。" />
-  <Card title="Governance" href="/docs/capabilities/governance" description="让资源边界、消耗观察和审计回看围绕同一主线持续生效。" />
+  <Card title="Chat" href="/docs/capabilities/chat" description="让团队先在项目上下文中开始工作，并保持连续对话。" />
+  <Card title="Notebook" href="/docs/capabilities/notebook" description="把复杂执行升级成可持续回看的长期任务。" />
+  <Card title="Files" href="/docs/capabilities/files" description="把资料与结果沉淀成项目资产，而不是一次性附件。" />
+  <Card title="Agents" href="/docs/capabilities/agents" description="把外部或托管智能体纳入项目正式工作流。" />
+  <Card title="Governance" href="/docs/capabilities/governance" description="让资源边界、消耗观察和审计回看沿同一条主线生效。" />
 </Cards>

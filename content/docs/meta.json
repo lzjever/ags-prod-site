@@ -1,0 +1,12 @@
+{
+  "title": "AgentSmith Docs",
+  "pages": [
+    "index",
+    "whitepaper",
+    "architecture",
+    "capabilities",
+    "agent-runtime",
+    "interface-guides",
+    "versioning"
+  ]
+}

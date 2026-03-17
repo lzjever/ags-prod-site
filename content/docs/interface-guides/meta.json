@@ -1,0 +1,12 @@
+{
+  "title": "界面与功能说明",
+  "pages": [
+    "index",
+    "project-overview",
+    "project-chat-session",
+    "project-notebook-task-detail",
+    "project-files",
+    "project-endpoints",
+    "project-audit"
+  ]
+}

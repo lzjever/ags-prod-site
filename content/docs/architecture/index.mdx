@@ -1,0 +1,43 @@
+---
+title: 整体架构总览
+description: 解释 System / Workspace / Project / Use / Govern 的整体骨架以及前后端执行链路。
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# 整体架构总览
+
+从产品视角，AgentSmith 当前最重要的结构不是页面数量，而是以下骨架：
+
+1. `System Admin`
+2. `Workspace`
+3. `Project`
+4. `Use 面`
+5. `Govern 面`
+
+<SiteSection
+  eyebrow="Product Skeleton"
+  title="项目容器是整个系统的共同骨架"
+  description="Use 与 Govern 不是两套系统，而是在同一个项目容器中并列切换。"
+>
+
+1. `System Admin` 负责工作区生命周期与底层基线。
+2. `Workspace` 是真实租户边界，不是纯前端分组。
+3. `Project` 是 AI 使用与治理的共同容器。
+4. `Use` 承载 Chat、Notebook、Files、Agents。
+5. `Govern` 承载 Endpoints、Policy、Credentials、Members、Usage、Audit 与 Settings。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Execution"
+  title="前端界面、执行协议与治理证据通过统一链路相连"
+  description="AgentSmith 的差异化之一，是把任务执行与治理证据组织在同一系统里。"
+>
+
+1. 前端界面承载产品交互与项目上下文。
+2. API 入口层负责鉴权、路由与执行编排。
+3. Agent 通过协议化事件回传 delta、trace、artifact 与 done/error。
+4. Notebook 与治理链路围绕同一套 endpoint / usage / audit 事实对齐。
+
+</SiteSection>

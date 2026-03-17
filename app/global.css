@@ -1,0 +1,128 @@
+@import 'tailwindcss';
+@import 'fumadocs-ui/css/neutral.css';
+@import 'fumadocs-ui/css/preset.css';
+
+:root {
+  --site-bg-base: 18 18 20;
+  --site-bg-panel: 23 24 27;
+  --site-bg-surface: 31 33 37;
+  --site-bg-surface-high: 43 46 52;
+  --site-bg-hover: 56 60 68;
+
+  --site-bg-dialog: 43 46 51;
+  --site-bg-input: 61 65 72;
+  --site-border-input: 80 85 94;
+
+  --site-border: 63 68 76;
+  --site-border-subtle: 47 50 57;
+  --site-border-strong: 89 97 113;
+
+  --site-text-strong: 255 255 255;
+  --site-text-primary: 219 223 228;
+  --site-text-secondary: 191 197 206;
+  --site-text-tertiary: 133 141 153;
+
+  --site-accent: 124 160 255;
+  --site-accent-strong: 91 140 255;
+  --site-success: 61 219 133;
+  --site-error: 244 67 54;
+  --site-warning: 255 185 92;
+
+  --site-radius-sm: 8px;
+  --site-radius-md: 14px;
+  --site-radius-lg: 18px;
+  --site-radius-xl: 24px;
+
+  --site-shadow-float: 0 16px 48px rgba(0, 0, 0, 0.24);
+  --site-shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.12);
+  --site-ai-gradient: linear-gradient(90deg, #c6d4ff 0%, #3b82f6 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: rgb(var(--site-text-primary));
+  background:
+    radial-gradient(circle at top left, rgb(var(--site-accent) / 0.16), transparent 26%),
+    radial-gradient(circle at top right, rgb(83 153 255 / 0.08), transparent 20%),
+    linear-gradient(180deg, rgb(9 10 12) 0%, rgb(var(--site-bg-base)) 160px);
+  background-attachment: fixed;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+::selection {
+  background: rgb(var(--site-accent) / 0.28);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--site-bg-base));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--site-bg-hover));
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--site-border-strong));
+}
+
+.site-shell {
+  position: relative;
+}
+
+.site-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgb(var(--site-accent) / 0.04), transparent 200px),
+    radial-gradient(circle at 50% -10%, rgb(var(--site-accent) / 0.18), transparent 35%);
+  z-index: -1;
+}
+
+.site-surface {
+  background: rgb(var(--site-bg-surface) / 0.82);
+  border: 1px solid rgb(var(--site-border) / 0.64);
+  box-shadow: var(--site-shadow-soft);
+  backdrop-filter: blur(12px);
+}
+
+.site-gradient-text {
+  background-image: var(--site-ai-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.site-prose-note {
+  color: rgb(var(--site-text-secondary));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

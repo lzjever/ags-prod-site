@@ -2,6 +2,7 @@
   "title": "产品架构",
   "pages": [
     "index",
+    "concepts-and-terms",
     "system-workspace-project",
     "control-execution-evidence",
     "notebook-runtime",

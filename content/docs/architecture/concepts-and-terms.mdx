@@ -1,0 +1,115 @@
+---
+title: 核心概念与名词解释
+description: 用更容易理解的方式解释 AgentSmith 中最重要的对象、角色和运行名词。
+---
+
+<Eyebrow>Architecture</Eyebrow>
+
+# 核心概念与名词解释
+
+如果你第一次接触 AgentSmith，最容易困惑的通常不是页面数量，而是名词太多。这个页面把系统里最重要的几个对象拆开说明，帮助你先建立一张清晰的概念图，再去看后面的结构和任务流。
+
+<ValueStatement
+  eyebrow="Plain Language"
+  title="先理解对象，再理解系统。"
+  summary="Workspace、Project、Endpoint、Notebook、External Agent、Internal Agent 不是一组并列术语，而是同一套系统中的不同层。"
+  detail="把这些概念分开理解之后，AgentSmith 的页面、权限和运行链路就会自然清楚很多。"
+/>
+
+<SiteSection
+  eyebrow="Workspace"
+  title="Workspace 是团队进入业务空间的第一层入口"
+  description="Workspace 是一个业务空间，而不是一个普通分组。"
+>
+
+一个 Workspace 通常对应一个团队、部门、客户环境或独立业务域。用户先进入 Workspace，再在这个空间里查看和创建 Project。这样做的好处是，团队的项目、成员、资源和后续审计记录都能先落在同一个业务边界里，而不会一开始就散落在整个系统中。
+
+如果没有 Workspace，项目会缺少稳定的上层边界，后续的成员范围、资源范围和审计范围也会变得难以解释。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Project"
+  title="Project 是真正开展工作的地方"
+  description="对大多数用户来说，Project 才是最常停留的容器。"
+>
+
+Project 用来承接团队每天真正要做的事。聊天、Notebook 任务、文件资料、智能体、模型资源、成员权限、用量和审计记录，都会围绕同一个 Project 持续保留。它是一个长期存在的工作单元，而不是一次性的会话或临时目录。
+
+这意味着 AI 工作不会停留在“某个人的一次调用”。输入资料、运行结果、限制规则和后续追溯都能继续留在项目里，方便团队多人协作。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Endpoint"
+  title="Endpoint 是模型资源的连接方式"
+  description="它决定任务调用哪一种模型能力，而不是决定业务本身。"
+>
+
+Endpoint 用来描述模型服务的连接信息，例如供应商、模型、密钥来源和调用方式。用户在 Chat 或 Notebook 中发起执行时，系统需要知道该把请求发往哪一个模型资源，这就是 Endpoint 的职责。
+
+把 Endpoint 单独做成项目资源，而不是让每个页面各自保存一份模型配置，有两个明显好处。第一，团队可以复用同一组模型连接；第二，资源限制、用量统计和审计记录都可以围绕同一对象持续保留。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Notebook Task"
+  title="Notebook Task 是一项可持续回看的工作记录"
+  description="它不是一次按钮点击，而是一条可以继续推进的任务记录。"
+>
+
+当工作需要更长的上下文、更明确的输入资料和更完整的结果沉淀时，用户会在 Notebook 中创建 Task。一个 Task 会持续保留标题、输入资料、消息过程、trace、产物文件和最终状态，因此它更适合分析、生成、整理和多轮推进这类工作。
+
+Task 是一个有上下文、有过程、有结果的工作条目。后续成员接手时，不需要重新猜测“这次执行到底基于什么输入、跑到了哪一步、输出了哪些文件”。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Artifacts"
+  title="Artifacts 是任务执行留下来的结果文件"
+  description="它们可以是文本、图片、表格、脚本输出或其他产物。"
+>
+
+智能体完成任务时，不一定只返回一段对话文本。很多任务还会生成图表、图片、报告文件、结构化数据或中间结果。这些内容在 AgentSmith 中会被当作 Artifacts 管理，并继续保留在任务上下文中。
+
+Artifacts 的价值在于，它让执行结果不再只是“看完就结束的一段回复”，而是可以被下载、继续引用、重新分析或作为下一次任务的输入。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="External Agent"
+  title="External Agent 是由外部环境接入到 AgentSmith 的智能体"
+  description="它通常运行在平台之外，再通过 WebSocket 与 AgentSmith 保持连接。"
+>
+
+External Agent 适合已经拥有独立运行环境的智能体，例如本地 runner、已有服务进程或企业内部自己维护的执行程序。AgentSmith 不直接托管它的进程生命周期，而是通过统一协议把任务发给它，再接收消息、trace 和产物回传。
+
+对用户来说，这条路径的特点是接入灵活、与已有 runner 兼容度高，也是当前更成熟的一条执行路径。对平台来说，这意味着执行环境本身仍由外部负责保持在线和可用。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="Internal Agent"
+  title="Internal Agent 是由平台托管运行环境的智能体"
+  description="它的目标不是让用户自己维护执行宿主，而是让平台准备并回收运行环境。"
+>
+
+Internal Agent 的思路与 External Agent 不同。它不是要求用户先在外部把 runner 常驻起来，再让平台去连接；而是由平台在需要执行时准备运行环境，并在任务完成后继续做保活、回收或复用。
+
+当前产品方向中，这条路径依赖 `sandbox manager` 和 `InternalAgentPodManager` 准备受控环境，再把 runner 放入该环境中执行。从 PRD 和现有代码来看，这个受控环境的目标形态是托管到 K8s / Pod 这类基础设施上。这样做的价值是，执行环境可以更容易实现隔离、统一回收和基础设施级管理。
+
+需要说明的是，这条托管路径目前仍属于 `部分实现`。也就是说，平台已经具备 sandbox starting、ensure、keepalive、release 和 fail-fast 的关键骨架，但它仍依赖外部基础设施配置是否完备。对用户来说，这意味着它代表了 AgentSmith 的重要方向，但当前成熟度仍低于 external agent 路径。
+
+</SiteSection>
+
+<SiteSection
+  eyebrow="External vs Internal"
+  title="两类 Agent 的区别，主要在运行位置和托管方式"
+  description="它们都能接收任务，但平台承担的责任不同。"
+>
+
+External Agent 运行在平台外部，平台负责把任务发过去并接收结果；Internal Agent 运行在平台准备的受控环境中，平台除了发任务，还要负责准备运行位置、保活和回收。前者更适合快速接入已有 runner，后者更适合逐步走向更可控、更稳定的企业托管执行方式。
+
+用一句话区分两者：External Agent 是把已经存在的执行者接入系统；Internal Agent 是由系统自己准备并管理执行环境。
+
+</SiteSection>

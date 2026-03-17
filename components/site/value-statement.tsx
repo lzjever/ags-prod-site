@@ -17,10 +17,11 @@ export function ValueStatement({
   return (
     <div
       className={cn(
-        'site-surface space-y-4 rounded-[var(--site-radius-xl)] p-6',
+        'site-surface relative overflow-hidden space-y-4 rounded-[var(--site-radius-xl)] p-6',
         className,
       )}
     >
+      <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-[linear-gradient(90deg,transparent,rgb(var(--site-accent)/0.82),transparent)]" />
       {eyebrow ? (
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[rgb(var(--site-accent))]">
           {eyebrow}

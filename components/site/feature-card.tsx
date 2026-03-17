@@ -15,8 +15,9 @@ export function FeatureCard({
   return (
     <Link
       href={href}
-      className="site-surface group flex h-full flex-col justify-between rounded-[var(--site-radius-lg)] p-5 transition-transform duration-200 hover:-translate-y-1"
+      className="site-surface group relative flex h-full flex-col justify-between overflow-hidden rounded-[var(--site-radius-lg)] p-5 transition-transform duration-200 hover:-translate-y-1"
     >
+      <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-[linear-gradient(90deg,transparent,rgb(var(--site-accent)/0.75),transparent)]" />
       <div className="space-y-3">
         <h3 className="text-lg font-semibold text-white">{title}</h3>
         <p className="text-sm leading-6 text-[rgb(var(--site-text-secondary))]">{description}</p>

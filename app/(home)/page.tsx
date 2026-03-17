@@ -59,6 +59,13 @@ const audienceCards = [
   },
 ] as const;
 
+const trustSignals = [
+  '项目级上下文',
+  '统一资源治理',
+  '可回看执行链路',
+  '可沉淀文件资产',
+] as const;
+
 const comparisonPoints = [
   {
     label: '普通 AI 工具',
@@ -171,6 +178,16 @@ export default function HomePage() {
               浏览关键界面
             </Link>
           </div>
+          <div className="flex flex-wrap gap-3">
+            {trustSignals.map((item) => (
+              <span
+                key={item}
+                className="rounded-full border border-[rgb(var(--site-border-strong)/0.35)] bg-[rgb(var(--site-bg-base)/0.55)] px-3 py-1.5 text-xs font-semibold tracking-[0.14em] text-[rgb(var(--site-accent))]"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <div className="rounded-[var(--site-radius-lg)] border border-[rgb(var(--site-border-subtle))] bg-[rgb(var(--site-bg-surface-high)/0.42)] p-4">
               <Waypoints className="h-5 w-5 text-[rgb(var(--site-accent))]" />
@@ -222,7 +239,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8 max-w-3xl space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             落地难点
@@ -244,7 +261,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8 max-w-3xl space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             为什么不是普通 AI 工具
@@ -270,7 +287,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-6 lg:grid-cols-2">
           <ValueStatement
             eyebrow="AgentSmith 的回答"
@@ -287,7 +304,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8 max-w-3xl space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             为什么值得长期采用
@@ -310,7 +327,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-6 lg:grid-cols-2">
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
@@ -321,6 +338,7 @@ export default function HomePage() {
               以 workspace / project 组织 AI 使用，以 endpoint 为治理主线，把 Usage、Policy、Audit、
               Members 与 Settings 统一进同一套项目结构，让企业不必在“先用起来”和“后面再治理”之间来回补洞。
             </p>
+            <p className="mt-5 text-sm font-medium text-[rgb(var(--site-accent))]">更适合长期运营的团队结构</p>
           </div>
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
@@ -330,11 +348,12 @@ export default function HomePage() {
             <p className="mt-4 leading-7 text-[rgb(var(--site-text-secondary))]">
               以 Notebook + Files + Agents 串联输入、执行、trace、artifacts 与运行工作目录，让智能体任务从个人技巧变成团队可以持续使用的正式能力。
             </p>
+            <p className="mt-5 text-sm font-medium text-[rgb(var(--site-accent))]">更适合持续复用的执行结构</p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="mb-8 max-w-3xl space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             核心能力
@@ -346,12 +365,12 @@ export default function HomePage() {
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {featureCards.map((card) => (
-            <FeatureCard key={card.title} {...card} />
+            <FeatureCard key={card.title} {...card} ctaLabel="查看这项能力如何落地" />
           ))}
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-12">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="site-surface rounded-[var(--site-radius-xl)] p-8">
             <div className="max-w-3xl space-y-3">
@@ -399,7 +418,7 @@ export default function HomePage() {
         <ReferenceGrid />
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16">
+      <section className="site-section-divider mx-auto max-w-7xl px-6 py-16">
         <div className="mb-8 max-w-3xl space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[rgb(var(--site-accent))]">
             继续阅读

@@ -110,6 +110,21 @@ img {
   backdrop-filter: blur(12px);
 }
 
+.site-section-divider {
+  position: relative;
+}
+
+.site-section-divider::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(1040px, calc(100% - 48px));
+  height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, rgb(var(--site-border-strong) / 0.5), transparent);
+}
+
 .site-gradient-text {
   background-image: var(--site-ai-gradient);
   -webkit-background-clip: text;
